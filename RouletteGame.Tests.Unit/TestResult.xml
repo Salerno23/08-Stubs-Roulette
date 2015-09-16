@@ -1,0 +1,188 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!--This file represents the results of running a test suite-->
+<test-results name="C:\# OFFLINE WORK\Courses\4\I4SWT\EXERCISES\10 - Fakes 1, stubs (Roulette)\10-Fakes-1\RouletteGame.Tests.Unit\RouletteGame.Tests.Unit.nunit" total="90" errors="0" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2014-12-19" time="14:01:46">
+  <environment nunit-version="2.6.3.13283" clr-version="2.0.50727.5485" os-version="Microsoft Windows NT 6.1.7601 Service Pack 1" platform="Win32NT" cwd="C:\# OFFLINE WORK\Courses\4\I4SWT\EXERCISES\10 - Fakes 1, stubs (Roulette)\10-Fakes-1\RouletteGame.Tests.Unit\bin\Debug" machine-name="ST-D09240" user="tfj" user-domain="IHA" />
+  <culture-info current-culture="da-DK" current-uiculture="en-US" />
+  <test-suite type="Project" name="C:\# OFFLINE WORK\Courses\4\I4SWT\EXERCISES\10 - Fakes 1, stubs (Roulette)\10-Fakes-1\RouletteGame.Tests.Unit\RouletteGame.Tests.Unit.nunit" executed="True" result="Success" success="True" time="0.424" asserts="0">
+    <results>
+      <test-suite type="Assembly" name="C:\# OFFLINE WORK\Courses\4\I4SWT\EXERCISES\10 - Fakes 1, stubs (Roulette)\10-Fakes-1\RouletteGame.Tests.Unit\bin\Debug\RouletteGame.Tests.Unit.dll" executed="True" result="Success" success="True" time="0.408" asserts="0">
+        <results>
+          <test-suite type="Namespace" name="Roulette" executed="True" result="Success" success="True" time="0.198" asserts="0">
+            <results>
+              <test-suite type="Namespace" name="Test" executed="True" result="Success" success="True" time="0.198" asserts="0">
+                <results>
+                  <test-suite type="Namespace" name="Unit" executed="True" result="Success" success="True" time="0.198" asserts="0">
+                    <results>
+                      <test-suite type="Namespace" name="Fields" executed="True" result="Success" success="True" time="0.198" asserts="0">
+                        <results>
+                          <test-suite type="TestFixture" name="FieldUnitTest" executed="True" result="Success" success="True" time="0.195" asserts="0">
+                            <results>
+                              <test-case name="Roulette.Test.Unit.Fields.FieldUnitTest.Field_Create_ColorBlackIsOK" executed="True" result="Success" success="True" time="0.031" asserts="1" />
+                              <test-case name="Roulette.Test.Unit.Fields.FieldUnitTest.Field_Create_ColorGreenIsOK" executed="True" result="Success" success="True" time="0.000" asserts="1" />
+                              <test-case name="Roulette.Test.Unit.Fields.FieldUnitTest.Field_Create_ColorRedIsOK" executed="True" result="Success" success="True" time="0.000" asserts="1" />
+                              <test-case name="Roulette.Test.Unit.Fields.FieldUnitTest.Field_Create_Number0IsOK" executed="True" result="Success" success="True" time="0.004" asserts="1" />
+                              <test-case name="Roulette.Test.Unit.Fields.FieldUnitTest.Field_Create_Number36IsOK" executed="True" result="Success" success="True" time="0.000" asserts="1" />
+                              <test-case name="Roulette.Test.Unit.Fields.FieldUnitTest.Field_Create_Number37ExceptionIsThrown" executed="True" result="Success" success="True" time="0.004" asserts="1" />
+                              <test-case name="Roulette.Test.Unit.Fields.FieldUnitTest.Field_Create_Value2EvenIsTrue" executed="True" result="Success" success="True" time="0.001" asserts="1" />
+                              <test-case name="Roulette.Test.Unit.Fields.FieldUnitTest.Field_Create_Value3EvenIsFalse" executed="True" result="Success" success="True" time="0.000" asserts="1" />
+                              <test-case name="Roulette.Test.Unit.Fields.FieldUnitTest.Field_ToString_BlackContainsCorrectValues" executed="True" result="Success" success="True" time="0.114" asserts="1" />
+                              <test-case name="Roulette.Test.Unit.Fields.FieldUnitTest.Field_ToString_GreenContainsCorrectValues" executed="True" result="Success" success="True" time="0.001" asserts="1" />
+                              <test-case name="Roulette.Test.Unit.Fields.FieldUnitTest.Field_ToString_RedContainsCorrectValues" executed="True" result="Success" success="True" time="0.000" asserts="1" />
+                            </results>
+                          </test-suite>
+                        </results>
+                      </test-suite>
+                    </results>
+                  </test-suite>
+                </results>
+              </test-suite>
+            </results>
+          </test-suite>
+          <test-suite type="Namespace" name="RouletteGame" executed="True" result="Success" success="True" time="0.199" asserts="0">
+            <results>
+              <test-suite type="Namespace" name="Tests" executed="True" result="Success" success="True" time="0.199" asserts="0">
+                <results>
+                  <test-suite type="Namespace" name="Unit" executed="True" result="Success" success="True" time="0.198" asserts="0">
+                    <results>
+                      <test-suite type="Namespace" name="Bets" executed="True" result="Success" success="True" time="0.045" asserts="0">
+                        <results>
+                          <test-suite type="TestFixture" name="BetUnitTest" executed="True" result="Success" success="True" time="0.003" asserts="0">
+                            <results>
+                              <test-case name="RouletteGame.Tests.Unit.Bets.BetUnitTest.Bet_Create_AmountIsOK" executed="True" result="Success" success="True" time="0.001" asserts="1" />
+                              <test-case name="RouletteGame.Tests.Unit.Bets.BetUnitTest.Bet_Create_NameIsOK" executed="True" result="Success" success="True" time="0.000" asserts="1" />
+                            </results>
+                          </test-suite>
+                          <test-suite type="TestFixture" name="ColorBetUnitTest" executed="True" result="Success" success="True" time="0.017" asserts="0">
+                            <results>
+                              <test-case name="RouletteGame.Tests.Unit.Bets.ColorBetUnitTest.ColorBet_BlackWonIsTrue_2TimesBetAmountWon" executed="True" result="Success" success="True" time="0.002" asserts="1" />
+                              <test-case name="RouletteGame.Tests.Unit.Bets.ColorBetUnitTest.ColorBet_GreenWonIsTrue_2TimesBetAmountWon" executed="True" result="Success" success="True" time="0.000" asserts="1" />
+                              <test-case name="RouletteGame.Tests.Unit.Bets.ColorBetUnitTest.ColorBet_RedWonIsTrue_2TimesBetAmountWon" executed="True" result="Success" success="True" time="0.000" asserts="1" />
+                              <test-case name="RouletteGame.Tests.Unit.Bets.ColorBetUnitTest.ColorBet_ToString_BlackBetContainsCorrectValues" executed="True" result="Success" success="True" time="0.001" asserts="1" />
+                              <test-case name="RouletteGame.Tests.Unit.Bets.ColorBetUnitTest.ColorBet_ToString_GreenBetContainsCorrectValues" executed="True" result="Success" success="True" time="0.000" asserts="1" />
+                              <test-case name="RouletteGame.Tests.Unit.Bets.ColorBetUnitTest.ColorBet_ToString_RedBetContainsCorrectValues" executed="True" result="Success" success="True" time="0.000" asserts="1" />
+                              <test-case name="RouletteGame.Tests.Unit.Bets.ColorBetUnitTest.ColorBet_WonIsFalse_NothingWon" executed="True" result="Success" success="True" time="0.000" asserts="1" />
+                            </results>
+                          </test-suite>
+                          <test-suite type="TestFixture" name="EvenOddBetUnitTest" executed="True" result="Success" success="True" time="0.011" asserts="0">
+                            <results>
+                              <test-case name="RouletteGame.Tests.Unit.Bets.EvenOddBetUnitTest.ColorBet_ToString_EvenBetContainsCorrectValues" executed="True" result="Success" success="True" time="0.001" asserts="1" />
+                              <test-case name="RouletteGame.Tests.Unit.Bets.EvenOddBetUnitTest.ColorBet_ToString_OddBetContainsCorrectValues" executed="True" result="Success" success="True" time="0.000" asserts="1" />
+                              <test-case name="RouletteGame.Tests.Unit.Bets.EvenOddBetUnitTest.EvenOddBet_EvenBetWonIsFalse_NothingWon" executed="True" result="Success" success="True" time="0.001" asserts="1" />
+                              <test-case name="RouletteGame.Tests.Unit.Bets.EvenOddBetUnitTest.EvenOddBet_EvenBetWonIsTrue_2TimesBetAmountReturned" executed="True" result="Success" success="True" time="0.000" asserts="1" />
+                              <test-case name="RouletteGame.Tests.Unit.Bets.EvenOddBetUnitTest.EvenOddBet_OddBetWonIsFalse_NothingWon" executed="True" result="Success" success="True" time="0.000" asserts="1" />
+                              <test-case name="RouletteGame.Tests.Unit.Bets.EvenOddBetUnitTest.EvenOddBet_OddBetWonIsTrue_2TimesBetAmountReturned" executed="True" result="Success" success="True" time="0.000" asserts="1" />
+                            </results>
+                          </test-suite>
+                          <test-suite type="TestFixture" name="FieldBetUnitTest" executed="True" result="Success" success="True" time="0.006" asserts="0">
+                            <results>
+                              <test-case name="RouletteGame.Tests.Unit.Bets.FieldBetUnitTest.FieldBet_ToString_ContainsCorrectValues" executed="True" result="Success" success="True" time="0.001" asserts="1" />
+                              <test-case name="RouletteGame.Tests.Unit.Bets.FieldBetUnitTest.FieldBet_WonIsFalse_NothingWon" executed="True" result="Success" success="True" time="0.001" asserts="1" />
+                              <test-case name="RouletteGame.Tests.Unit.Bets.FieldBetUnitTest.FieldBet_WonIsTrue_36TimesBetAmountWon" executed="True" result="Success" success="True" time="0.000" asserts="1" />
+                            </results>
+                          </test-suite>
+                        </results>
+                      </test-suite>
+                      <test-suite type="Namespace" name="Fields" executed="True" result="Success" success="True" time="0.073" asserts="0">
+                        <results>
+                          <test-suite type="Namespace" name="Randomizing" executed="True" result="Success" success="True" time="0.073" asserts="0">
+                            <results>
+                              <test-suite type="TestFixture" name="FieldFactoryUnitTest" executed="True" result="Success" success="True" time="0.067" asserts="0">
+                                <results>
+                                  <test-case name="RouletteGame.Tests.Unit.Fields.Randomizing.FieldFactoryUnitTest.FieldFactory_CreateFields_CountOK" executed="True" result="Success" success="True" time="0.004" asserts="1" />
+                                  <test-case name="RouletteGame.Tests.Unit.Fields.Randomizing.FieldFactoryUnitTest.FieldFactory_CreateFields_FieldNumber0OK" executed="True" result="Success" success="True" time="0.002" asserts="1" />
+                                  <test-case name="RouletteGame.Tests.Unit.Fields.Randomizing.FieldFactoryUnitTest.FieldFactory_CreateFields_FieldNumber10OK" executed="True" result="Success" success="True" time="0.000" asserts="1" />
+                                  <test-case name="RouletteGame.Tests.Unit.Fields.Randomizing.FieldFactoryUnitTest.FieldFactory_CreateFields_FieldNumber11OK" executed="True" result="Success" success="True" time="0.000" asserts="1" />
+                                  <test-case name="RouletteGame.Tests.Unit.Fields.Randomizing.FieldFactoryUnitTest.FieldFactory_CreateFields_FieldNumber12OK" executed="True" result="Success" success="True" time="0.000" asserts="1" />
+                                  <test-case name="RouletteGame.Tests.Unit.Fields.Randomizing.FieldFactoryUnitTest.FieldFactory_CreateFields_FieldNumber13OK" executed="True" result="Success" success="True" time="0.000" asserts="1" />
+                                  <test-case name="RouletteGame.Tests.Unit.Fields.Randomizing.FieldFactoryUnitTest.FieldFactory_CreateFields_FieldNumber14OK" executed="True" result="Success" success="True" time="0.000" asserts="1" />
+                                  <test-case name="RouletteGame.Tests.Unit.Fields.Randomizing.FieldFactoryUnitTest.FieldFactory_CreateFields_FieldNumber15OK" executed="True" result="Success" success="True" time="0.000" asserts="1" />
+                                  <test-case name="RouletteGame.Tests.Unit.Fields.Randomizing.FieldFactoryUnitTest.FieldFactory_CreateFields_FieldNumber16OK" executed="True" result="Success" success="True" time="0.000" asserts="1" />
+                                  <test-case name="RouletteGame.Tests.Unit.Fields.Randomizing.FieldFactoryUnitTest.FieldFactory_CreateFields_FieldNumber17OK" executed="True" result="Success" success="True" time="0.000" asserts="1" />
+                                  <test-case name="RouletteGame.Tests.Unit.Fields.Randomizing.FieldFactoryUnitTest.FieldFactory_CreateFields_FieldNumber18OK" executed="True" result="Success" success="True" time="0.000" asserts="1" />
+                                  <test-case name="RouletteGame.Tests.Unit.Fields.Randomizing.FieldFactoryUnitTest.FieldFactory_CreateFields_FieldNumber19OK" executed="True" result="Success" success="True" time="0.000" asserts="1" />
+                                  <test-case name="RouletteGame.Tests.Unit.Fields.Randomizing.FieldFactoryUnitTest.FieldFactory_CreateFields_FieldNumber1OK" executed="True" result="Success" success="True" time="0.000" asserts="1" />
+                                  <test-case name="RouletteGame.Tests.Unit.Fields.Randomizing.FieldFactoryUnitTest.FieldFactory_CreateFields_FieldNumber20OK" executed="True" result="Success" success="True" time="0.000" asserts="1" />
+                                  <test-case name="RouletteGame.Tests.Unit.Fields.Randomizing.FieldFactoryUnitTest.FieldFactory_CreateFields_FieldNumber21OK" executed="True" result="Success" success="True" time="0.000" asserts="1" />
+                                  <test-case name="RouletteGame.Tests.Unit.Fields.Randomizing.FieldFactoryUnitTest.FieldFactory_CreateFields_FieldNumber22OK" executed="True" result="Success" success="True" time="0.000" asserts="1" />
+                                  <test-case name="RouletteGame.Tests.Unit.Fields.Randomizing.FieldFactoryUnitTest.FieldFactory_CreateFields_FieldNumber23OK" executed="True" result="Success" success="True" time="0.000" asserts="1" />
+                                  <test-case name="RouletteGame.Tests.Unit.Fields.Randomizing.FieldFactoryUnitTest.FieldFactory_CreateFields_FieldNumber24OK" executed="True" result="Success" success="True" time="0.000" asserts="1" />
+                                  <test-case name="RouletteGame.Tests.Unit.Fields.Randomizing.FieldFactoryUnitTest.FieldFactory_CreateFields_FieldNumber25OK" executed="True" result="Success" success="True" time="0.000" asserts="1" />
+                                  <test-case name="RouletteGame.Tests.Unit.Fields.Randomizing.FieldFactoryUnitTest.FieldFactory_CreateFields_FieldNumber26OK" executed="True" result="Success" success="True" time="0.000" asserts="1" />
+                                  <test-case name="RouletteGame.Tests.Unit.Fields.Randomizing.FieldFactoryUnitTest.FieldFactory_CreateFields_FieldNumber27OK" executed="True" result="Success" success="True" time="0.000" asserts="1" />
+                                  <test-case name="RouletteGame.Tests.Unit.Fields.Randomizing.FieldFactoryUnitTest.FieldFactory_CreateFields_FieldNumber28OK" executed="True" result="Success" success="True" time="0.000" asserts="1" />
+                                  <test-case name="RouletteGame.Tests.Unit.Fields.Randomizing.FieldFactoryUnitTest.FieldFactory_CreateFields_FieldNumber29OK" executed="True" result="Success" success="True" time="0.000" asserts="1" />
+                                  <test-case name="RouletteGame.Tests.Unit.Fields.Randomizing.FieldFactoryUnitTest.FieldFactory_CreateFields_FieldNumber2OK" executed="True" result="Success" success="True" time="0.000" asserts="1" />
+                                  <test-case name="RouletteGame.Tests.Unit.Fields.Randomizing.FieldFactoryUnitTest.FieldFactory_CreateFields_FieldNumber30OK" executed="True" result="Success" success="True" time="0.000" asserts="1" />
+                                  <test-case name="RouletteGame.Tests.Unit.Fields.Randomizing.FieldFactoryUnitTest.FieldFactory_CreateFields_FieldNumber31OK" executed="True" result="Success" success="True" time="0.000" asserts="1" />
+                                  <test-case name="RouletteGame.Tests.Unit.Fields.Randomizing.FieldFactoryUnitTest.FieldFactory_CreateFields_FieldNumber32OK" executed="True" result="Success" success="True" time="0.000" asserts="1" />
+                                  <test-case name="RouletteGame.Tests.Unit.Fields.Randomizing.FieldFactoryUnitTest.FieldFactory_CreateFields_FieldNumber33OK" executed="True" result="Success" success="True" time="0.000" asserts="1" />
+                                  <test-case name="RouletteGame.Tests.Unit.Fields.Randomizing.FieldFactoryUnitTest.FieldFactory_CreateFields_FieldNumber34OK" executed="True" result="Success" success="True" time="0.000" asserts="1" />
+                                  <test-case name="RouletteGame.Tests.Unit.Fields.Randomizing.FieldFactoryUnitTest.FieldFactory_CreateFields_FieldNumber35OK" executed="True" result="Success" success="True" time="0.000" asserts="1" />
+                                  <test-case name="RouletteGame.Tests.Unit.Fields.Randomizing.FieldFactoryUnitTest.FieldFactory_CreateFields_FieldNumber36OK" executed="True" result="Success" success="True" time="0.000" asserts="1" />
+                                  <test-case name="RouletteGame.Tests.Unit.Fields.Randomizing.FieldFactoryUnitTest.FieldFactory_CreateFields_FieldNumber3OK" executed="True" result="Success" success="True" time="0.000" asserts="1" />
+                                  <test-case name="RouletteGame.Tests.Unit.Fields.Randomizing.FieldFactoryUnitTest.FieldFactory_CreateFields_FieldNumber4OK" executed="True" result="Success" success="True" time="0.000" asserts="1" />
+                                  <test-case name="RouletteGame.Tests.Unit.Fields.Randomizing.FieldFactoryUnitTest.FieldFactory_CreateFields_FieldNumber5OK" executed="True" result="Success" success="True" time="0.000" asserts="1" />
+                                  <test-case name="RouletteGame.Tests.Unit.Fields.Randomizing.FieldFactoryUnitTest.FieldFactory_CreateFields_FieldNumber6OK" executed="True" result="Success" success="True" time="0.000" asserts="1" />
+                                  <test-case name="RouletteGame.Tests.Unit.Fields.Randomizing.FieldFactoryUnitTest.FieldFactory_CreateFields_FieldNumber7OK" executed="True" result="Success" success="True" time="0.000" asserts="1" />
+                                  <test-case name="RouletteGame.Tests.Unit.Fields.Randomizing.FieldFactoryUnitTest.FieldFactory_CreateFields_FieldNumber8OK" executed="True" result="Success" success="True" time="0.000" asserts="1" />
+                                  <test-case name="RouletteGame.Tests.Unit.Fields.Randomizing.FieldFactoryUnitTest.FieldFactory_CreateFields_FieldNumber9OK" executed="True" result="Success" success="True" time="0.000" asserts="1" />
+                                </results>
+                              </test-suite>
+                              <test-suite type="TestFixture" name="RouletteRandomizerUnitTest" executed="True" result="Success" success="True" time="0.002" asserts="0">
+                                <results>
+                                  <test-case name="RouletteGame.Tests.Unit.Fields.Randomizing.RouletteRandomizerUnitTest.RouletteRandomizer_NextOK" executed="True" result="Success" success="True" time="0.001" asserts="1" />
+                                </results>
+                              </test-suite>
+                            </results>
+                          </test-suite>
+                        </results>
+                      </test-suite>
+                      <test-suite type="Namespace" name="Roulette" executed="True" result="Success" success="True" time="0.019" asserts="0">
+                        <results>
+                          <test-suite type="TestFixture" name="RouletteUnitTest" executed="True" result="Success" success="True" time="0.019" asserts="0">
+                            <results>
+                              <test-case name="RouletteGame.Tests.Unit.Roulette.RouletteUnitTest.Roulette_Create_ListCountOK" executed="True" result="Success" success="True" time="0.001" asserts="1" />
+                              <test-case name="RouletteGame.Tests.Unit.Roulette.RouletteUnitTest.Roulette_CreateWith1Field_ListCountOK" executed="True" result="Success" success="True" time="0.001" asserts="1" />
+                              <test-case name="RouletteGame.Tests.Unit.Roulette.RouletteUnitTest.Roulette_GetResultBeforeSpin_ExceptionThrown" executed="True" result="Success" success="True" time="0.001" asserts="1" />
+                              <test-case name="RouletteGame.Tests.Unit.Roulette.RouletteUnitTest.Roulette_RandomizerReturnsIllegalValue_ExceptionThrown" executed="True" result="Success" success="True" time="0.001" asserts="1" />
+                              <test-case name="RouletteGame.Tests.Unit.Roulette.RouletteUnitTest.Roulette_Spin_ResultColorOK" executed="True" result="Success" success="True" time="0.000" asserts="1" />
+                              <test-case name="RouletteGame.Tests.Unit.Roulette.RouletteUnitTest.Roulette_Spin_ResultNumberOK" executed="True" result="Success" success="True" time="0.000" asserts="1" />
+                              <test-case name="RouletteGame.Tests.Unit.Roulette.RouletteUnitTest.Roulette_SpinAndGetResult_ResultColorOK" executed="True" result="Success" success="True" time="0.001" asserts="1" />
+                              <test-case name="RouletteGame.Tests.Unit.Roulette.RouletteUnitTest.Roulette_SpinAndGetResult_ResultNumberOK" executed="True" result="Success" success="True" time="0.001" asserts="1" />
+                            </results>
+                          </test-suite>
+                        </results>
+                      </test-suite>
+                      <test-suite type="Namespace" name="RouletteGame" executed="True" result="Success" success="True" time="0.037" asserts="0">
+                        <results>
+                          <test-suite type="TestFixture" name="RouletteGameUnitTest" executed="True" result="Success" success="True" time="0.037" asserts="0">
+                            <results>
+                              <test-case name="RouletteGame.Tests.Unit.RouletteGame.RouletteGameUnitTest.RouletteGame_Create_BetsAreEmpty" executed="True" result="Success" success="True" time="0.001" asserts="1" />
+                              <test-case name="RouletteGame.Tests.Unit.RouletteGame.RouletteGameUnitTest.RouletteGame_Create_RoundIsClosed" executed="True" result="Success" success="True" time="0.001" asserts="1" />
+                              <test-case name="RouletteGame.Tests.Unit.RouletteGame.RouletteGameUnitTest.RouletteGame_OpenBets_RoundIsOpen" executed="True" result="Success" success="True" time="0.001" asserts="1" />
+                              <test-case name="RouletteGame.Tests.Unit.RouletteGame.RouletteGameUnitTest.RouletteGame_OpenCloseBets_RoundIsClosed" executed="True" result="Success" success="True" time="0.000" asserts="1" />
+                              <test-case name="RouletteGame.Tests.Unit.RouletteGame.RouletteGameUnitTest.RouletteGame_PayUp_10BetWonAmountCalled" executed="True" result="Success" success="True" time="0.003" asserts="10" />
+                              <test-case name="RouletteGame.Tests.Unit.RouletteGame.RouletteGameUnitTest.RouletteGame_PayUp_1BetWonAmountCalled" executed="True" result="Success" success="True" time="0.001" asserts="1" />
+                              <test-case name="RouletteGame.Tests.Unit.RouletteGame.RouletteGameUnitTest.RouletteGame_PayUp_RouletteGetResultCalled" executed="True" result="Success" success="True" time="0.001" asserts="1" />
+                              <test-case name="RouletteGame.Tests.Unit.RouletteGame.RouletteGameUnitTest.RouletteGame_PayUp_StringCorrect" executed="True" result="Success" success="True" time="0.002" asserts="1" />
+                              <test-case name="RouletteGame.Tests.Unit.RouletteGame.RouletteGameUnitTest.RouletteGame_Place10Bets_NBetsIs10" executed="True" result="Success" success="True" time="0.000" asserts="1" />
+                              <test-case name="RouletteGame.Tests.Unit.RouletteGame.RouletteGameUnitTest.RouletteGame_PlaceBetWhenRoundClosed_Exception" executed="True" result="Success" success="True" time="0.001" asserts="1" />
+                              <test-case name="RouletteGame.Tests.Unit.RouletteGame.RouletteGameUnitTest.RouletteGame_PlaceBetWhenRoundOpened_NBetsIs1" executed="True" result="Success" success="True" time="0.000" asserts="1" />
+                              <test-case name="RouletteGame.Tests.Unit.RouletteGame.RouletteGameUnitTest.RouletteGame_PlaceBetWhenRoundOpenedThenClosed_Exception" executed="True" result="Success" success="True" time="0.001" asserts="1" />
+                              <test-case name="RouletteGame.Tests.Unit.RouletteGame.RouletteGameUnitTest.RouletteGame_SpinRoulette_SpinCalled" executed="True" result="Success" success="True" time="0.000" asserts="1" />
+                              <test-case name="RouletteGame.Tests.Unit.RouletteGame.RouletteGameUnitTest.RouletteGame_SpinRouletteWhenRoundOpen_Exception" executed="True" result="Success" success="True" time="0.001" asserts="1" />
+                            </results>
+                          </test-suite>
+                        </results>
+                      </test-suite>
+                    </results>
+                  </test-suite>
+                </results>
+              </test-suite>
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+    </results>
+  </test-suite>
+</test-results>
