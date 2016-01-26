@@ -1,10 +1,12 @@
-namespace Roulette.Output
+using System;
+
+namespace RouletteGame.Output
 {
     public class ConsoleOutput : IOutput
     {
         public void Report(string arg)
         {
-            System.Console.WriteLine("Roulette says: " + arg);
+            Console.WriteLine("Roulette says: " + arg);
         }
     }
 }

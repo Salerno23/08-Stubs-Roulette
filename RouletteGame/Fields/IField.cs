@@ -1,4 +1,4 @@
-namespace Roulette.Fields
+namespace RouletteGame.Fields
 {
     public enum FieldColor
     {

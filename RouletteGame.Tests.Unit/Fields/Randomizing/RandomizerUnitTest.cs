@@ -1,5 +1,5 @@
 ﻿using NUnit.Framework;
-using Roulette.Randomizing;
+using RouletteGame.Randomizing;
 
 namespace RouletteGame.Tests.Unit.Fields.Randomizing
 {
@@ -10,7 +10,7 @@ namespace RouletteGame.Tests.Unit.Fields.Randomizing
         public void RouletteRandomizer_NextOK()
         {
             var uut = new RouletteRandomizer();
-            uint result = uut.Next();
+            var result = uut.Next();
             Assert.That(result <= 36); // Not exactly exhaustive
         }
     }

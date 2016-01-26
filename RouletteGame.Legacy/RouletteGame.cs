@@ -1,15 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
-namespace RouletteGame
+namespace RouletteGame.Legacy
 {
     public class RouletteGame
     {
-        private Roulette _roulette;
+        private readonly List<Bet> _bets;
+        private readonly Roulette _roulette;
         private bool _roundIsOpen;
-        private List<Bet> _bets;
 
         public RouletteGame(Roulette roulette)
         {
@@ -49,11 +47,10 @@ namespace RouletteGame
             foreach (var bet in _bets)
             {
                 var won = bet.WonAmount(result);
-                if(won > 0)
+                if (won > 0)
                     Console.WriteLine("{0} just won {1}$ on a {2}", bet.PlayerName, won, bet);
             }
         }
-
     }
 
     public class RouletteGameException : Exception

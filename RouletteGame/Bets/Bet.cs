@@ -1,29 +1,19 @@
-﻿using Roulette.Fields;
-using RouletteGame.Bets;
+﻿using RouletteGame.Fields;
 
-namespace Roulette.Bets
+namespace RouletteGame.Bets
 {
     public abstract class Bet : IBet
     {
-        private readonly uint _amount;
-        private readonly string _playerName;
-
         protected Bet(string name, uint amount)
         {
-            _playerName = name;
-            _amount = amount;
+            PlayerName = name;
+            Amount = amount;
         }
 
 
-        public string PlayerName
-        {
-            get { return _playerName; }
-        }
+        public string PlayerName { get; }
 
-        public uint Amount
-        {
-            get { return _amount; }
-        }
+        public uint Amount { get; }
 
         public abstract uint WonAmount(IField field);
     }

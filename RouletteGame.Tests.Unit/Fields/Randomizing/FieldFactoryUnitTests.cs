@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using NUnit.Framework;
-using Roulette.Fields;
+using RouletteGame.Fields;
 
 namespace RouletteGame.Tests.Unit.Fields.Randomizing
 {
@@ -19,7 +19,7 @@ namespace RouletteGame.Tests.Unit.Fields.Randomizing
 
         private bool IsFieldWithNumberAndColorInList(List<IField> list, uint expectedNumber, FieldColor expectedColor)
         {
-            int index = list.FindIndex(field => field.Number == expectedNumber);
+            var index = list.FindIndex(field => field.Number == expectedNumber);
             return list[index].Color == expectedColor;
         }
 

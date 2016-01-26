@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using NUnit.Framework;
-using Roulette.Bets;
-using Roulette.Fields;
-using Roulette.Game;
-using Roulette.Roulette;
+using RouletteGame.Bets;
+using RouletteGame.Fields;
+using RouletteGame.Game;
+using RouletteGame.Roulette;
 using RouletteGame.Tests.Unit.DerivedTestClasses;
 using RouletteGame.Tests.Unit.Fakes;
 
@@ -84,13 +84,13 @@ namespace RouletteGame.Tests.Unit.RouletteGame
             var roulette = new MockRoulette();
             var uut = new TestRouletteGame(roulette);
             uut.OpenBets();
-            foreach (MockBet bet in bets)
+            foreach (var bet in bets)
                 uut.PlaceBet(bet);
 
             uut.CloseBets();
             uut.SpinRoulette();
             uut.PayUp();
-            foreach (MockBet bet in bets)
+            foreach (var bet in bets)
                 Assert.IsTrue(bet.WonAmountCalled);
         }
 
@@ -157,18 +157,8 @@ namespace RouletteGame.Tests.Unit.RouletteGame
         [Test]
         public void RouletteGame_PlaceBetWhenRoundClosed_Exception()
         {
-            var uut = new TestRouletteGame(new MockRoulette());            
-            Assert.Throws<RouletteGameException>(() => uut.PlaceBet(new MockBet()));
-        }
-
-        [Test]
-        public void RouletteGame_PlaceBetWhenRoundOpenedThenClosed_Exception()
-        {
             var uut = new TestRouletteGame(new MockRoulette());
-            uut.OpenBets();
-            uut.CloseBets();
-            
-            Assert.Throws<RouletteGameException>(() =>uut.PlaceBet(new MockBet()));
+            Assert.Throws<RouletteGameException>(() => uut.PlaceBet(new MockBet()));
         }
 
         [Test]
@@ -180,14 +170,14 @@ namespace RouletteGame.Tests.Unit.RouletteGame
             Assert.AreEqual(uut.NBets, 1);
         }
 
-
         [Test]
-        public void RouletteGame_SpinRouletteWhenRoundOpen_Exception()
+        public void RouletteGame_PlaceBetWhenRoundOpenedThenClosed_Exception()
         {
             var uut = new TestRouletteGame(new MockRoulette());
             uut.OpenBets();
+            uut.CloseBets();
 
-            Assert.Throws<RouletteGameException>(() => uut.SpinRoulette());
+            Assert.Throws<RouletteGameException>(() => uut.PlaceBet(new MockBet()));
         }
 
         [Test]
@@ -200,6 +190,16 @@ namespace RouletteGame.Tests.Unit.RouletteGame
             uut.SpinRoulette();
 
             Assert.IsTrue(roulette.SpinCalled);
+        }
+
+
+        [Test]
+        public void RouletteGame_SpinRouletteWhenRoundOpen_Exception()
+        {
+            var uut = new TestRouletteGame(new MockRoulette());
+            uut.OpenBets();
+
+            Assert.Throws<RouletteGameException>(() => uut.SpinRoulette());
         }
     }
 }

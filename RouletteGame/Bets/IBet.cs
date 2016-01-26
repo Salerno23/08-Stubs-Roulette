@@ -1,6 +1,6 @@
-using Roulette.Fields;
+using RouletteGame.Fields;
 
-namespace Roulette.Bets
+namespace RouletteGame.Bets
 {
     public interface IBet
     {

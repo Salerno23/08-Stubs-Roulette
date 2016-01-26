@@ -1,26 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace RouletteGame
+﻿namespace RouletteGame.Legacy
 {
     public abstract class Bet
     {
-        private readonly string _playerName;
-        private readonly uint _amount;
-
         protected Bet(string name, uint amount)
         {
-            _playerName = name;
-            _amount = amount;
+            PlayerName = name;
+            Amount = amount;
         }
 
 
-        public string PlayerName    { get { return _playerName; }   }
-        public uint Amount          { get { return _amount;     }   }
+        public string PlayerName { get; }
+        public uint Amount { get; }
 
-        public virtual uint WonAmount(Field field)  { return 0; }
+        public virtual uint WonAmount(Field field)
+        {
+            return 0;
+        }
     }
 
     public class FieldBet : Bet
@@ -34,8 +29,8 @@ namespace RouletteGame
 
         public override uint WonAmount(Field field)
         {
-            if (field.Number == _fieldNumber) return 36 * Amount;
-            else return 0;
+            if (field.Number == _fieldNumber) return 36*Amount;
+            return 0;
         }
 
         public override string ToString()
@@ -53,26 +48,31 @@ namespace RouletteGame
             _color = color;
         }
 
-        override public uint WonAmount(Field field)
+        public override uint WonAmount(Field field)
         {
-            if (field.Color == _color) return 2 * Amount;
-            else return 0;
+            if (field.Color == _color) return 2*Amount;
+            return 0;
         }
-        
+
         public override string ToString()
         {
             string colorString;
 
             switch (_color)
             {
-                case Field.Red: colorString = "red"; break;
-                case Field.Black: colorString = "black"; break;
-                default: colorString = "green"; break;
+                case Field.Red:
+                    colorString = "red";
+                    break;
+                case Field.Black:
+                    colorString = "black";
+                    break;
+                default:
+                    colorString = "green";
+                    break;
             }
 
             return string.Format("{0}$ color bet on {1}", Amount, colorString);
         }
-
     }
 
     public class EvenOddBet : Bet
@@ -84,15 +84,15 @@ namespace RouletteGame
             _even = even;
         }
 
-        override public uint WonAmount(Field field)
+        public override uint WonAmount(Field field)
         {
-            if (field.Even == _even) return 2 * Amount;
-            else return 0;
+            if (field.Even == _even) return 2*Amount;
+            return 0;
         }
 
         public override string ToString()
         {
-            string evenOddString = _even ? "even" : "odd";
+            var evenOddString = _even ? "even" : "odd";
 
             return string.Format("{0}$ even/odd bet on {1}", Amount, evenOddString);
         }

@@ -1,5 +1,5 @@
-using Roulette.Bets;
-using Roulette.Fields;
+using RouletteGame.Bets;
+using RouletteGame.Fields;
 
 namespace RouletteGame.Tests.Unit.Fakes
 {

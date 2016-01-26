@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using Roulette.Bets;
-using Roulette.Output;
-using Roulette.Roulette;
+using RouletteGame.Bets;
+using RouletteGame.Output;
+using RouletteGame.Roulette;
 
-namespace Roulette.Game
+namespace RouletteGame.Game
 {
     public interface IRouletteGame
     {
@@ -18,9 +18,9 @@ namespace Roulette.Game
     public class RouletteGame : IRouletteGame
     {
         private readonly IRoulette _roulette;
-        protected bool RoundIsOpen;
         protected readonly List<IBet> Bets;
         protected readonly IOutput Output;
+        protected bool RoundIsOpen;
 
         public RouletteGame(IRoulette roulette, IOutput output)
         {
@@ -62,11 +62,10 @@ namespace Roulette.Game
             foreach (var bet in Bets)
             {
                 var won = bet.WonAmount(result);
-                if(won > 0)
+                if (won > 0)
                     Output.Report(string.Format("{0} just won {1}$ on a {2}", bet.PlayerName, won, bet));
             }
         }
-
     }
 
     public class RouletteGameException : Exception

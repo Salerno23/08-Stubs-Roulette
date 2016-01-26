@@ -1,7 +1,7 @@
 ﻿using NUnit.Framework;
-using Roulette.Fields;
-using Roulette.Game;
-using Roulette.Randomizing;
+using RouletteGame.Fields;
+using RouletteGame.Game;
+using RouletteGame.Randomizing;
 using RouletteGame.Tests.Unit.DerivedTestClasses;
 using RouletteGame.Tests.Unit.Fakes;
 
@@ -11,17 +11,17 @@ namespace RouletteGame.Tests.Unit.Roulette
     public class RouletteUnitTest
     {
         [Test]
-        public void Roulette_CreateWith1Field_ListCountOK()
-        {
-            var uut = new TestRoulette(new MockBlack1FieldFactory(), new StubRandomizer());
-            Assert.AreEqual(uut.GetFieldListSize(), 1);
-        }
-
-        [Test]
         public void Roulette_Create_ListCountOK()
         {
             var uut = new TestRoulette(new StandardFieldFactory(), new RouletteRandomizer());
             Assert.AreEqual(uut.GetFieldListSize(), 37);
+        }
+
+        [Test]
+        public void Roulette_CreateWith1Field_ListCountOK()
+        {
+            var uut = new TestRoulette(new MockBlack1FieldFactory(), new StubRandomizer());
+            Assert.AreEqual(uut.GetFieldListSize(), 1);
         }
 
 
@@ -39,7 +39,23 @@ namespace RouletteGame.Tests.Unit.Roulette
             var factory = new MockFieldFactory();
             var uut = new TestRoulette(factory, randomizer);
             Assert.Throws<RouletteGameException>(uut.Spin);
-           
+        }
+
+
+        [Test]
+        public void Roulette_Spin_ResultColorOK()
+        {
+            var uut = new TestRoulette(new MockBlack1FieldFactory(), new StubRandomizer());
+            uut.Spin();
+            Assert.AreEqual(uut.GetResult().Color, FieldColor.Black);
+        }
+
+        [Test]
+        public void Roulette_Spin_ResultNumberOK()
+        {
+            var uut = new TestRoulette(new MockBlack1FieldFactory(), new StubRandomizer());
+            uut.Spin();
+            Assert.AreEqual(uut.GetResult().Number, 1);
         }
 
         [Test]
@@ -71,24 +87,7 @@ namespace RouletteGame.Tests.Unit.Roulette
             var uut = new TestRoulette(factory, randomizer);
             uut.Spin();
 
-            Assert.AreEqual((uint) uut.GetResult().Number, 6);
-        }
-
-
-        [Test]
-        public void Roulette_Spin_ResultColorOK()
-        {
-            var uut = new TestRoulette(new MockBlack1FieldFactory(), new StubRandomizer());
-            uut.Spin();
-            Assert.AreEqual(uut.GetResult().Color, FieldColor.Black);
-        }
-
-        [Test]
-        public void Roulette_Spin_ResultNumberOK()
-        {
-            var uut = new TestRoulette(new MockBlack1FieldFactory(), new StubRandomizer());
-            uut.Spin();
-            Assert.AreEqual((uint) uut.GetResult().Number, 1);
+            Assert.AreEqual(uut.GetResult().Number, 6);
         }
     }
 }

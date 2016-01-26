@@ -1,4 +1,4 @@
-namespace Roulette.Output
+namespace RouletteGame.Output
 {
     public interface IOutput
     {

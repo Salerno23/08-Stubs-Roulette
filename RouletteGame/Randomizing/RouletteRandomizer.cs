@@ -1,7 +1,6 @@
 using System;
-using RouletteGame.Randomizing;
 
-namespace Roulette.Randomizing
+namespace RouletteGame.Randomizing
 {
     public class RouletteRandomizer : IRandomizer
     {

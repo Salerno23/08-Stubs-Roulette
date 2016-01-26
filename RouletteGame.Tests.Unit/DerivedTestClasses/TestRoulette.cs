@@ -1,10 +1,10 @@
-using Roulette.Fields;
+using RouletteGame.Fields;
 using RouletteGame.Randomizing;
 
 namespace RouletteGame.Tests.Unit.DerivedTestClasses
 {
     // Roulette derivative to expose "private parts" of class Roulette
-    public class TestRoulette : global::Roulette.Roulette.Roulette
+    public class TestRoulette : global::RouletteGame.Roulette.Roulette
     {
         public TestRoulette(IFieldFactory fieldFactory, IRandomizer randomizer) : base(fieldFactory, randomizer)
         {
@@ -16,5 +16,4 @@ namespace RouletteGame.Tests.Unit.DerivedTestClasses
             return Fields.Count;
         }
     }
-
 }

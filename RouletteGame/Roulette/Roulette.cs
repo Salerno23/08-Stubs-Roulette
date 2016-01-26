@@ -1,16 +1,14 @@
 ﻿using System.Collections.Generic;
-using Roulette.Fields;
-using Roulette.Game;
+using RouletteGame.Fields;
+using RouletteGame.Game;
 using RouletteGame.Randomizing;
 
-namespace Roulette.Roulette
+namespace RouletteGame.Roulette
 {
-
-
     public class Roulette : IRoulette
     {
-        protected readonly List<IField> Fields;
         private readonly IRandomizer _randomizer;
+        protected readonly List<IField> Fields;
         private IField _result;
 
         public Roulette(IFieldFactory fieldFactory, IRandomizer randomizer)

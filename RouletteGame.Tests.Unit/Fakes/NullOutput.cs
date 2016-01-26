@@ -1,4 +1,4 @@
-using Roulette.Output;
+using RouletteGame.Output;
 
 namespace RouletteGame.Tests.Unit.Fakes
 {

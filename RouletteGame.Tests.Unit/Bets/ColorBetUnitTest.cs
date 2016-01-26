@@ -1,6 +1,6 @@
 using NUnit.Framework;
-using Roulette.Bets;
-using Roulette.Fields;
+using RouletteGame.Bets;
+using RouletteGame.Fields;
 using RouletteGame.Tests.Unit.Fakes;
 
 namespace RouletteGame.Tests.Unit.Bets

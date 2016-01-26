@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Roulette.Fields
+namespace RouletteGame.Fields
 {
     public class StandardFieldFactory : IFieldFactory
     {

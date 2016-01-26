@@ -1,7 +1,7 @@
 ﻿using NUnit.Framework;
-using Roulette.Fields;
+using RouletteGame.Fields;
 
-namespace Roulette.Test.Unit.Fields
+namespace RouletteGame.Tests.Unit.Fields
 {
     [TestFixture]
     public class FieldUnitTest
@@ -46,7 +46,6 @@ namespace Roulette.Test.Unit.Fields
         public void Field_Create_Number37ExceptionIsThrown()
         {
             Assert.Throws<FieldException>(() => { new Field(37, FieldColor.Black); });
-
         }
 
 
