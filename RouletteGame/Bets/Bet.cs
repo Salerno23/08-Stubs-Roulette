@@ -15,6 +15,7 @@ namespace RouletteGame.Bets
 
         public uint Amount { get; }
 
+
         public abstract uint WonAmount(IField field);
     }
 }
