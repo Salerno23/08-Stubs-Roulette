@@ -21,7 +21,7 @@ namespace RouletteGame.Bets
         {
             var evenOddString = _even ? "even" : "odd";
 
-            return string.Format("{0}$ even/odd bet on {1}", Amount, evenOddString);
+            return $"{Amount}$ even/odd bet on {evenOddString}";
         }
     }
 }

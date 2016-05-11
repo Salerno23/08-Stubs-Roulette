@@ -19,7 +19,7 @@ namespace RouletteGame.Bets
 
         public override string ToString()
         {
-            return string.Format("{0}$ field bet on {1}", Amount, _fieldNumber);
+            return $"{Amount}$ field bet on {_fieldNumber}";
         }
     }
 }

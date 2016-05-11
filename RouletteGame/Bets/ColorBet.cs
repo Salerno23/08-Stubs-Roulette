@@ -19,7 +19,7 @@ namespace RouletteGame.Bets
 
         public override string ToString()
         {
-            return string.Format("{0}$ color bet on {1}", Amount, _color);
+            return $"{Amount}$ color bet on {_color}";
         }
     }
 }
