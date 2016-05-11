@@ -16,9 +16,9 @@ namespace RouletteGame.Tests.Integration
         private Roulette.Roulette _roulette;
         private IOutput _output;
         private IRandomizer _randomizer;
-        private IBet _evenOddBet = new EvenOddBet("Berit", 100, true);
-        private IBet _colorBet = new ColorBet("Bente", 100, FieldColor.Black);
-        private IBet _fieldBet = new FieldBet("Bjarne", 100, 2);
+        private readonly IBet _evenOddBet = new EvenOddBet("Berit", 100, true);
+        private readonly IBet _colorBet = new ColorBet("Bente", 100, FieldColor.Black);
+        private readonly IBet _fieldBet = new FieldBet("Bjarne", 100, 2);
         [SetUp]
         public void SetUp()
         {
@@ -126,6 +126,22 @@ namespace RouletteGame.Tests.Integration
                 str.ToLower().Contains("bjarne") &&
                 str.ToLower().Contains("3600") &&
                 str.ToLower().Contains("2")
+                ));
+        }
+
+
+        [Test]
+        public void PayUp_FieldBetPlaced_NoWinnerIsAnnounced()
+        {
+            _randomizer.Next().Returns((uint)3);   // Requires knowledge that Fields[3] is NOT #2
+            _game.OpenBets();
+            _game.PlaceBet(_fieldBet);
+            _game.CloseBets();
+            _game.SpinRoulette();
+            _game.PayUp();
+
+            _output.DidNotReceive().Report(Arg.Is<string>(str =>
+                str.ToLower().Contains("bjarne")
                 ));
         }
     }
