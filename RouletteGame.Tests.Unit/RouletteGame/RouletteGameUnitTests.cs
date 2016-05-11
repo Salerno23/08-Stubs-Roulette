@@ -46,21 +46,21 @@ namespace RouletteGame.Tests.Unit.RouletteGame
         [Test]
         public void RouletteGame_Create_BetsAreEmpty()
         {
-            var uut = new TestRouletteGame(new MockRoulette());
+            var uut = new TestGame(new MockRoulette());
             Assert.AreEqual(uut.NBets, 0);
         }
 
         [Test]
         public void RouletteGame_Create_RoundIsClosed()
         {
-            var uut = new TestRouletteGame(new MockRoulette());
+            var uut = new TestGame(new MockRoulette());
             Assert.IsFalse(uut.IsRoundOpen);
         }
 
         [Test]
         public void RouletteGame_OpenBets_RoundIsOpen()
         {
-            var uut = new TestRouletteGame(new MockRoulette());
+            var uut = new TestGame(new MockRoulette());
             uut.OpenBets();
             Assert.IsTrue(uut.IsRoundOpen);
         }
@@ -68,7 +68,7 @@ namespace RouletteGame.Tests.Unit.RouletteGame
         [Test]
         public void RouletteGame_OpenCloseBets_RoundIsClosed()
         {
-            var uut = new TestRouletteGame(new MockRoulette());
+            var uut = new TestGame(new MockRoulette());
             uut.OpenBets();
             uut.CloseBets();
             Assert.IsFalse(uut.IsRoundOpen);
@@ -82,7 +82,7 @@ namespace RouletteGame.Tests.Unit.RouletteGame
                 bets.Add(new MockBet());
 
             var roulette = new MockRoulette();
-            var uut = new TestRouletteGame(roulette);
+            var uut = new TestGame(roulette);
             uut.OpenBets();
             foreach (var bet in bets)
                 uut.PlaceBet(bet);
@@ -101,7 +101,7 @@ namespace RouletteGame.Tests.Unit.RouletteGame
             var field = new StubField {Number = 10, Color = FieldColor.Red};
 
             var roulette = new MockRoulette(field);
-            var uut = new TestRouletteGame(roulette);
+            var uut = new TestGame(roulette);
             uut.OpenBets();
             uut.PlaceBet(bet);
             uut.CloseBets();
@@ -116,7 +116,7 @@ namespace RouletteGame.Tests.Unit.RouletteGame
         {
             var field = new StubField {Number = 10, Color = FieldColor.Red};
             var roulette = new MockRoulette(field);
-            var uut = new TestRouletteGame(roulette);
+            var uut = new TestGame(roulette);
             uut.OpenBets();
             uut.CloseBets();
             uut.SpinRoulette();
@@ -133,7 +133,7 @@ namespace RouletteGame.Tests.Unit.RouletteGame
             var reporter = new MockOutput();
 
             var roulette = new MockRoulette(field);
-            var uut = new TestRouletteGame(roulette, reporter);
+            var uut = new TestGame(roulette, reporter);
             uut.OpenBets();
             uut.PlaceBet(bet);
             uut.CloseBets();
@@ -147,7 +147,7 @@ namespace RouletteGame.Tests.Unit.RouletteGame
         [Test]
         public void RouletteGame_Place10Bets_NBetsIs10()
         {
-            var uut = new TestRouletteGame(new MockRoulette());
+            var uut = new TestGame(new MockRoulette());
             uut.OpenBets();
             for (uint i = 0; i < 10; i++)
                 uut.PlaceBet(new MockBet());
@@ -157,14 +157,14 @@ namespace RouletteGame.Tests.Unit.RouletteGame
         [Test]
         public void RouletteGame_PlaceBetWhenRoundClosed_Exception()
         {
-            var uut = new TestRouletteGame(new MockRoulette());
+            var uut = new TestGame(new MockRoulette());
             Assert.Throws<RouletteGameException>(() => uut.PlaceBet(new MockBet()));
         }
 
         [Test]
         public void RouletteGame_PlaceBetWhenRoundOpened_NBetsIs1()
         {
-            var uut = new TestRouletteGame(new MockRoulette());
+            var uut = new TestGame(new MockRoulette());
             uut.OpenBets();
             uut.PlaceBet(new MockBet());
             Assert.AreEqual(uut.NBets, 1);
@@ -173,7 +173,7 @@ namespace RouletteGame.Tests.Unit.RouletteGame
         [Test]
         public void RouletteGame_PlaceBetWhenRoundOpenedThenClosed_Exception()
         {
-            var uut = new TestRouletteGame(new MockRoulette());
+            var uut = new TestGame(new MockRoulette());
             uut.OpenBets();
             uut.CloseBets();
 
@@ -184,7 +184,7 @@ namespace RouletteGame.Tests.Unit.RouletteGame
         public void RouletteGame_SpinRoulette_SpinCalled()
         {
             var roulette = new MockRoulette();
-            var uut = new TestRouletteGame(roulette);
+            var uut = new TestGame(roulette);
             uut.OpenBets();
             uut.CloseBets();
             uut.SpinRoulette();
@@ -196,7 +196,7 @@ namespace RouletteGame.Tests.Unit.RouletteGame
         [Test]
         public void RouletteGame_SpinRouletteWhenRoundOpen_Exception()
         {
-            var uut = new TestRouletteGame(new MockRoulette());
+            var uut = new TestGame(new MockRoulette());
             uut.OpenBets();
 
             Assert.Throws<RouletteGameException>(() => uut.SpinRoulette());

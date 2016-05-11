@@ -4,15 +4,15 @@ using RouletteGame.Tests.Unit.Fakes;
 
 namespace RouletteGame.Tests.Unit.DerivedTestClasses
 {
-    internal class TestRouletteGame : Game.RouletteGame
+    internal class TestGame : Game.Game
     {
-        public TestRouletteGame(IRoulette roulette)
+        public TestGame(IRoulette roulette)
             : base(roulette, new NullOutput())
         {
         }
 
 
-        public TestRouletteGame(IRoulette roulette, IOutput output)
+        public TestGame(IRoulette roulette, IOutput output)
             : base(roulette, output)
         {
         }

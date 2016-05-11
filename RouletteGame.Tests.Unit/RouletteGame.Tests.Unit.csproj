@@ -49,7 +49,7 @@
     <Compile Include="Bets\EvenOddBetUnitTest.cs" />
     <Compile Include="Bets\FieldBetUnitTest.cs" />
     <Compile Include="DerivedTestClasses\TestRoulette.cs" />
-    <Compile Include="DerivedTestClasses\TestRouletteGame.cs" />
+    <Compile Include="DerivedTestClasses\TestGame.cs" />
     <Compile Include="Fakes\MockBet.cs" />
     <Compile Include="Fakes\MockBlack1FieldFactory.cs" />
     <Compile Include="Fakes\MockFieldFactory.cs" />

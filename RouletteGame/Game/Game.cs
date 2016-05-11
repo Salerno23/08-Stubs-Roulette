@@ -6,23 +6,14 @@ using RouletteGame.Roulette;
 
 namespace RouletteGame.Game
 {
-    public interface IRouletteGame
-    {
-        void OpenBets();
-        void CloseBets();
-        void PlaceBet(IBet bet);
-        void SpinRoulette();
-        void PayUp();
-    }
-
-    public class RouletteGame : IRouletteGame
+    public class Game : IGame
     {
         private readonly IRoulette _roulette;
         protected readonly List<IBet> Bets;
         protected readonly IOutput Output;
         protected bool RoundIsOpen;
 
-        public RouletteGame(IRoulette roulette, IOutput output)
+        public Game(IRoulette roulette, IOutput output)
         {
             Bets = new List<IBet>();
             _roulette = roulette;
