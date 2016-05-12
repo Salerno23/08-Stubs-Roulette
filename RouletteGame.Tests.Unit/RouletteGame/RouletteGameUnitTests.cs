@@ -47,14 +47,14 @@ namespace RouletteGame.Tests.Unit.RouletteGame
         public void RouletteGame_Create_BetsAreEmpty()
         {
             var uut = new TestGame(new MockRoulette());
-            Assert.AreEqual(uut.NBets, 0);
+            Assert.That(uut.NBets, Is.EqualTo(0));
         }
 
         [Test]
         public void RouletteGame_Create_RoundIsClosed()
         {
             var uut = new TestGame(new MockRoulette());
-            Assert.IsFalse(uut.IsRoundOpen);
+            Assert.That(uut.IsRoundOpen, Is.False);
         }
 
         [Test]
@@ -62,7 +62,7 @@ namespace RouletteGame.Tests.Unit.RouletteGame
         {
             var uut = new TestGame(new MockRoulette());
             uut.OpenBets();
-            Assert.IsTrue(uut.IsRoundOpen);
+            Assert.That(uut.IsRoundOpen, Is.True);
         }
 
         [Test]
@@ -71,7 +71,7 @@ namespace RouletteGame.Tests.Unit.RouletteGame
             var uut = new TestGame(new MockRoulette());
             uut.OpenBets();
             uut.CloseBets();
-            Assert.IsFalse(uut.IsRoundOpen);
+            Assert.That(uut.IsRoundOpen, Is.False);
         }
 
         [Test]
@@ -91,7 +91,7 @@ namespace RouletteGame.Tests.Unit.RouletteGame
             uut.SpinRoulette();
             uut.PayUp();
             foreach (var bet in bets)
-                Assert.IsTrue(bet.WonAmountCalled);
+                Assert.That(bet.WonAmountCalled, Is.True);
         }
 
         [Test]
@@ -108,7 +108,7 @@ namespace RouletteGame.Tests.Unit.RouletteGame
             uut.SpinRoulette();
 
             uut.PayUp();
-            Assert.IsTrue(bet.WonAmountCalled);
+            Assert.That(bet.WonAmountCalled, Is.True);
         }
 
         [Test]
@@ -122,7 +122,7 @@ namespace RouletteGame.Tests.Unit.RouletteGame
             uut.SpinRoulette();
 
             uut.PayUp();
-            Assert.IsTrue(roulette.GetResultCalled);
+            Assert.That(roulette.GetResultCalled, Is.True);
         }
 
         [Test]
@@ -151,14 +151,14 @@ namespace RouletteGame.Tests.Unit.RouletteGame
             uut.OpenBets();
             for (uint i = 0; i < 10; i++)
                 uut.PlaceBet(new MockBet());
-            Assert.AreEqual(uut.NBets, 10);
+            Assert.That(uut.NBets, Is.EqualTo(10));
         }
 
         [Test]
         public void RouletteGame_PlaceBetWhenRoundClosed_Exception()
         {
             var uut = new TestGame(new MockRoulette());
-            Assert.Throws<RouletteGameException>(() => uut.PlaceBet(new MockBet()));
+            Assert.That(() => uut.PlaceBet(new MockBet()), Throws.TypeOf<RouletteGameException>());
         }
 
         [Test]
@@ -167,7 +167,7 @@ namespace RouletteGame.Tests.Unit.RouletteGame
             var uut = new TestGame(new MockRoulette());
             uut.OpenBets();
             uut.PlaceBet(new MockBet());
-            Assert.AreEqual(uut.NBets, 1);
+            Assert.That(uut.NBets, Is.EqualTo(1));
         }
 
         [Test]
@@ -177,7 +177,7 @@ namespace RouletteGame.Tests.Unit.RouletteGame
             uut.OpenBets();
             uut.CloseBets();
 
-            Assert.Throws<RouletteGameException>(() => uut.PlaceBet(new MockBet()));
+            Assert.That(() => uut.PlaceBet(new MockBet()), Throws.TypeOf<RouletteGameException>());
         }
 
         [Test]
@@ -189,7 +189,7 @@ namespace RouletteGame.Tests.Unit.RouletteGame
             uut.CloseBets();
             uut.SpinRoulette();
 
-            Assert.IsTrue(roulette.SpinCalled);
+            Assert.That(roulette.SpinCalled, Is.True);
         }
 
 
@@ -199,7 +199,7 @@ namespace RouletteGame.Tests.Unit.RouletteGame
             var uut = new TestGame(new MockRoulette());
             uut.OpenBets();
 
-            Assert.Throws<RouletteGameException>(() => uut.SpinRoulette());
+            Assert.That(() => uut.SpinRoulette(), Throws.TypeOf<RouletteGameException>());
         }
     }
 }

@@ -15,7 +15,7 @@ namespace RouletteGame.Tests.Unit.Bets
             stubField.Color = FieldColor.Black;
 
             var uut = new ColorBet("Pete Mitchell", 100, FieldColor.Black);
-            Assert.AreEqual(uut.WonAmount(stubField), 200);
+            Assert.That(uut.WonAmount(stubField), Is.EqualTo(200));
         }
 
         [Test]
@@ -25,7 +25,7 @@ namespace RouletteGame.Tests.Unit.Bets
             stubField.Color = FieldColor.Green;
 
             var uut = new ColorBet("Pete Mitchell", 100, FieldColor.Green);
-            Assert.AreEqual(uut.WonAmount(stubField), 200);
+            Assert.That(uut.WonAmount(stubField), Is.EqualTo(200));
         }
 
         [Test]
@@ -35,7 +35,7 @@ namespace RouletteGame.Tests.Unit.Bets
             stubField.Color = FieldColor.Red;
 
             var uut = new ColorBet("Pete Mitchell", 100, FieldColor.Red);
-            Assert.AreEqual(uut.WonAmount(stubField), 200);
+            Assert.That(uut.WonAmount(stubField), Is.EqualTo(200));
         }
 
         [Test]
@@ -67,7 +67,7 @@ namespace RouletteGame.Tests.Unit.Bets
             stubField.Color = FieldColor.Red;
 
             var uut = new ColorBet("Pete Mitchell", 100, FieldColor.Black);
-            Assert.AreEqual(uut.WonAmount(stubField), 0);
+            Assert.That(uut.WonAmount(stubField), Is.EqualTo(0));
         }
     }
 }

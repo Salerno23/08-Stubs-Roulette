@@ -5,21 +5,18 @@ namespace RouletteGame.Fields
     public class Field : IField
     {
         private uint _number;
-
-
+        
         // Constructor
         public Field(uint number, FieldColor color)
         {
             Number = number;
             Color = color;
+            if (number == 0) Parity = Parity.Neither;
+            else Parity = (number%2 == 0 ? Parity.Even : Parity.Odd);
         }
 
         public FieldColor Color { get; set; }
-
-        public bool Even
-        {
-            get { return Number%2 == 0; }
-        }
+        public Parity Parity { get; }
 
         public uint Number
         {

@@ -7,11 +7,18 @@ namespace RouletteGame.Fields
         Green
     }
 
+    public enum Parity
+    {
+        Even,
+        Odd,
+        Neither
+    }
+
     public interface IField
     {
         uint Number { get; }
         FieldColor Color { get; }
-        bool Even { get; }
+        Parity Parity { get; }
         string ToString();
     }
 }

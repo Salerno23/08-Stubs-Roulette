@@ -21,7 +21,7 @@ namespace RouletteGame.Tests.Unit.Bets
             stubField.Number = 1;
 
             var uut = new FieldBet("Pete Mitchell", 100, 0);
-            Assert.AreEqual(uut.WonAmount(stubField), 0);
+            Assert.That(uut.WonAmount(stubField), Is.EqualTo(0));
         }
 
         [Test]
@@ -31,7 +31,7 @@ namespace RouletteGame.Tests.Unit.Bets
             stubField.Number = 0;
 
             var uut = new FieldBet("Pete Mitchell", 100, 0);
-            Assert.AreEqual(uut.WonAmount(stubField), 3600);
+            Assert.That(uut.WonAmount(stubField), Is.EqualTo(3600));
         }
     }
 }

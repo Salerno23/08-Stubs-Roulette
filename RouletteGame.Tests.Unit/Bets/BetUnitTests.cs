@@ -10,14 +10,14 @@ namespace RouletteGame.Tests.Unit.Bets
         public void Bet_Create_AmountIsOK()
         {
             var uut = new FieldBet("Pete Mitchell", 100, 0);
-            Assert.AreEqual(uut.Amount, 100);
+            Assert.That(uut.Amount, Is.EqualTo(100));
         }
 
         [Test]
         public void Bet_Create_NameIsOK()
         {
             var uut = new FieldBet("Pete Mitchell", 100, 0); // Use FieldBet to test superclass Bet properties
-            Assert.AreEqual(uut.PlayerName, "Pete Mitchell");
+            Assert.That(uut.PlayerName, Is.EqualTo("Pete Mitchell"));
         }
     }
 }
