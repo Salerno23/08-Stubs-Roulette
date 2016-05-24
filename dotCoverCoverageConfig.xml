@@ -25,6 +25,12 @@
 		<ClassMask>RouletteGame.Output.ConsoleOutput</ClassMask>
 		<FunctionMask>*</FunctionMask>
 	  </FilterEntry>
+      <FilterEntry>
+		<ModuleMask>RouletteGame.Tests.Unit</ModuleMask>
+		<ClassMask>*</ClassMask>
+		<FunctionMask>*</FunctionMask>
+	  </FilterEntry>
+
     </ExcludeFilters>
   </Filters>
 
