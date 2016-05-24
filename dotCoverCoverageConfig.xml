@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <AnalyseParams>
-  <TargetExecutable>C:\Program Files (x86)\NUnit.org\nunit-console\nunit3-console.exe></TargetExecutable>
+  <TargetExecutable>C:\Program Files (x86)\NUnit.org\nunit-console\nunit3-console.exe</TargetExecutable>
   <TargetArguments>RouletteGame.Tests.Unit.dll --result:TestResult.xml;format=nunit2</TargetArguments>
   <TargetWorkingDir>RouletteGame.Tests.Unit</TargetWorkingDir>
   <TempDir><!-- Directory for the auxiliary files. Set to system temp by default. --></TempDir>
