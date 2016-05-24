@@ -21,11 +21,9 @@
 	-->
     <ExcludeFilters>
       <FilterEntry>
-		<ModuleMask>RouletteGame.dll</ModuleMask>
-		<ModuleVersionMask>*</ModuleVersionMask>
+		<ModuleMask>RouletteGame</ModuleMask>
 		<ClassMask>RouletteGame.Output.ConsoleOutput</ClassMask>
 		<FunctionMask>*</FunctionMask>
-		<IsEnabled>true</IsEnabled>
 	  </FilterEntry>
     </ExcludeFilters>
   </Filters>
