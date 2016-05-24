@@ -20,7 +20,10 @@
     <ExcludeFilters>
       <FilterEntry>...</FilterEntry>
       <FilterEntry>...</FilterEntry>
-      <FilterEntry>...</FilterEntry>
+      <FilterEntry>
+		<ModuleMask>RouletteGame.Output</ModuleMask>
+		<ClassMask>ConsoleOutput</ClassMask>
+	  </FilterEntry>
     </ExcludeFilters>
   </Filters>
   -->
