@@ -22,7 +22,7 @@
     <ExcludeFilters>
       <FilterEntry>
 		<ModuleMask>RouletteGame.dll</ModuleMask>
-		<ModuleVersionMask>*<ModuleVersionMask>
+		<ModuleVersionMask>*</ModuleVersionMask>
 		<ClassMask>RouletteGame.Output.ConsoleOutput</ClassMask>
 		<FunctionMask>*</FunctionMask>
 		<IsEnabled>true</IsEnabled>
