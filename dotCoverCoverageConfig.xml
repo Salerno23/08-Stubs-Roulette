@@ -20,11 +20,14 @@
     </IncludeFilters>
 	-->
     <ExcludeFilters>
+		<!-- Exclude console output from coverage -->
       <FilterEntry>
 		<ModuleMask>RouletteGame</ModuleMask>
 		<ClassMask>RouletteGame.Output.ConsoleOutput</ClassMask>
 		<FunctionMask>*</FunctionMask>
 	  </FilterEntry>
+	  
+	  <!-- Exclude test project from coverage -->
       <FilterEntry>
 		<ModuleMask>RouletteGame.Tests.Unit</ModuleMask>
 		<ClassMask>*</ClassMask>
