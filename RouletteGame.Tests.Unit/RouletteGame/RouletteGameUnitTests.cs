@@ -9,7 +9,6 @@ using RouletteGame.Tests.Unit.Fakes;
 
 namespace RouletteGame.Tests.Unit.RouletteGame
 {
-
     internal class MockRoulette : IRoulette
     {
         private readonly IField _fieldToReturn;
