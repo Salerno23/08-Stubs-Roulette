@@ -21,8 +21,8 @@
 	-->
     <ExcludeFilters>
       <FilterEntry>
-		<ModuleMask>RouletteGame.Output</ModuleMask>
-		<ClassMask>ConsoleOutput</ClassMask>
+		<ModuleMask>RouletteGame.dll</ModuleMask>
+		<ClassMask>RouletteGame.Output.*</ClassMask>
 		<FunctionMask>*</FunctionMask>
 	  </FilterEntry>
     </ExcludeFilters>

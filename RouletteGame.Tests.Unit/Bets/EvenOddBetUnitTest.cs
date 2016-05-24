@@ -12,14 +12,21 @@ namespace RouletteGame.Tests.Unit.Bets
         public void ColorBet_ToString_EvenBetContainsCorrectValues()
         {
             var uut = new EvenOddBet("Pete Mitchell", 100, Parity.Even);
-            Assert.That(uut.ToString(), Is.StringMatching("100.*even"));
+            Assert.That(uut.ToString().ToLower(), Is.StringMatching("100.*even"));
         }
 
         [Test]
         public void ColorBet_ToString_OddBetContainsCorrectValues()
         {
             var uut = new EvenOddBet("Pete Mitchell", 100, Parity.Odd);
-            Assert.That(uut.ToString(), Is.StringMatching("100.*odd"));
+            Assert.That(uut.ToString().ToLower(), Is.StringMatching("100.*odd"));
+        }
+
+        [Test]
+        public void ColorBet_ToString_NeitherBetContainsCorrectValues()
+        {
+            var uut = new EvenOddBet("Pete Mitchell", 100, Parity.Neither);
+            Assert.That(uut.ToString().ToLower(), Is.StringMatching("100.*neither"));
         }
 
         [Test]
