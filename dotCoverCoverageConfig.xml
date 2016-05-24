@@ -23,6 +23,7 @@
       <FilterEntry>
 		<ModuleMask>RouletteGame.Output</ModuleMask>
 		<ClassMask>ConsoleOutput</ClassMask>
+		<FunctionMask>*</FunctionMask>
 	  </FilterEntry>
     </ExcludeFilters>
   </Filters>
