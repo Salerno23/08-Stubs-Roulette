@@ -22,7 +22,7 @@ namespace RouletteGame.Roulette
         {
             var n = _randomizer.Next();
             if (Fields.Count > n) _result = Fields[(int) n];
-            else throw new RouletteGameException(string.Format("Illegal field number: {0}", n));
+            else throw new RouletteGameException($"Illegal field number: {n}");
         }
 
         public IField GetResult()

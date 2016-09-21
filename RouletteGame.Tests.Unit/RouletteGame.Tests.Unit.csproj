@@ -48,8 +48,6 @@
     <Compile Include="Bets\ColorBetUnitTest.cs" />
     <Compile Include="Bets\EvenOddBetUnitTest.cs" />
     <Compile Include="Bets\FieldBetUnitTest.cs" />
-    <Compile Include="DerivedTestClasses\TestRoulette.cs" />
-    <Compile Include="DerivedTestClasses\TestGame.cs" />
     <Compile Include="Fakes\MockBet.cs" />
     <Compile Include="Fakes\MockBlack1FieldFactory.cs" />
     <Compile Include="Fakes\MockFieldFactory.cs" />
@@ -57,14 +55,19 @@
     <Compile Include="Fakes\NullOutput.cs" />
     <Compile Include="Fakes\StubField.cs" />
     <Compile Include="Fakes\StubRandomizer.cs" />
-    <Compile Include="Fields\Randomizing\FieldFactoryUnitTests.cs" />
+    <Compile Include="Fields\StandardFieldFactoryUnitTest.cs" />
     <Compile Include="Fields\FieldUnitTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Fields\Randomizing\RandomizerUnitTest.cs" />
-    <Compile Include="RouletteGame\RouletteGameUnitTests.cs" />
+    <Compile Include="Fields\Randomizing\RouletteRandomizerUnitTest.cs" />
+    <Compile Include="Fakes\MockRoulette.cs" />
+    <Compile Include="Game\RouletteGameUnitTests.cs" />
     <Compile Include="Roulette\RouletteUnitTests.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\RouletteGame.Legacy\RouletteGame.Legacy.csproj">
+      <Project>{8DB02F2D-DF86-4A3B-B94D-0374C1ECB9ED}</Project>
+      <Name>RouletteGame.Legacy</Name>
+    </ProjectReference>
     <ProjectReference Include="..\RouletteGame\RouletteGame.csproj">
       <Project>{6603448a-0a93-4bb9-99dc-000fa59466f5}</Project>
       <Name>RouletteGame</Name>
@@ -73,6 +76,7 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

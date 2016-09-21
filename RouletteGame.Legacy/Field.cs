@@ -6,10 +6,9 @@ namespace RouletteGame.Legacy
     {
         public const uint Red = 0;
         public const uint Black = 1;
-        public const uint Green = 1;
+        public const uint Green = 2;
 
         private uint _color;
-
         private uint _number;
 
         // Constructor

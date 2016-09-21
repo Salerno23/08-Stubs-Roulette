@@ -1,46 +1,28 @@
 ﻿using NUnit.Framework;
 using RouletteGame.Fields;
-using RouletteGame.Game;
 
 namespace RouletteGame.Tests.Unit.Fields
 {
     [TestFixture]
     public class FieldUnitTest
     {
-        // TESTING NUMBER VALUES
-        [Test]
-        public void Field_Create_ColorBlackIsOK()
+        
+        [TestCase(FieldColor.Black)]
+        [TestCase(FieldColor.Red)]
+        [TestCase(FieldColor.Green)]
+        public void Ctor_DifferentColorsSet_ColorIsCorrect(FieldColor color)
         {
-            var uut = new Field(10, FieldColor.Black);
-            Assert.That(uut.Color, Is.EqualTo(FieldColor.Black));
+            var uut = new Field(10, color);
+            Assert.That(uut.Color, Is.EqualTo(color));
         }
 
-        [Test]
-        public void Field_Create_ColorGreenIsOK()
-        {
-            var uut = new Field(10, FieldColor.Green);
-            Assert.That(uut.Color, Is.EqualTo(FieldColor.Green));
-        }
 
-        [Test]
-        public void Field_Create_ColorRedIsOK()
+        [TestCase(0)]
+        [TestCase(36)]
+        public void Ctor_ValidFieldNumbers_NumberIsCorrect(int number)
         {
-            var uut = new Field(10, FieldColor.Red);
-            Assert.That(uut.Color, Is.EqualTo(FieldColor.Red));
-        }
-
-        [Test]
-        public void Field_Create_Number0IsOK()
-        {
-            var uut = new Field(0, FieldColor.Black);
-            Assert.That(uut.Number, Is.EqualTo(0));
-        }
-
-        [Test]
-        public void Field_Create_Number36IsOK()
-        {
-            var uut = new Field(36, FieldColor.Black);
-            Assert.That(uut.Number, Is.EqualTo(36));
+            var uut = new Field((uint) number, FieldColor.Black);
+            Assert.That(uut.Number, Is.EqualTo(number));
         }
 
         [Test]
@@ -50,46 +32,35 @@ namespace RouletteGame.Tests.Unit.Fields
         }
 
 
-        [Test]
-        public void Field_Create_Value0ParityIsNeither()
+        [TestCase(0, Parity.Neither)]
+        [TestCase(1, Parity.Odd)]
+        [TestCase(2, Parity.Even)]
+        public void Field_Create_Value0ParityIsNeither(int number, Parity parity)
         {
-            var uut = new Field(0, FieldColor.Green);
-            Assert.That(uut.Parity, Is.EqualTo(Parity.Neither));
+            var uut = new Field((uint) number, FieldColor.Green);
+            Assert.That(uut.Parity, Is.EqualTo(parity));
         }
 
-        [Test]
-        public void Field_Create_Value2ParityIsEven()
-        {
-            var uut = new Field(2, FieldColor.Black);
-            Assert.That(uut.Parity, Is.EqualTo(Parity.Even));
-        }
-
-        [Test]
-        public void Field_Create_Value3ParityIsOdd()
-        {
-            var uut = new Field(3, FieldColor.Black);
-            Assert.That(uut.Parity, Is.EqualTo(Parity.Odd));
-        }
 
         [Test]
         public void Field_ToString_BlackContainsCorrectValues()
         {
             var uut = new Field(3, FieldColor.Black);
-            Assert.That(uut.ToString(), Is.StringMatching("3.*Black"));
+            Assert.That(uut.ToString().ToLower(), Is.StringMatching("3.*black"));
         }
 
         [Test]
         public void Field_ToString_GreenContainsCorrectValues()
         {
             var uut = new Field(0, FieldColor.Green);
-            Assert.That(uut.ToString(), Is.StringMatching("0.*Green"));
+            Assert.That(uut.ToString().ToLower(), Is.StringMatching("0.*green"));
         }
 
         [Test]
         public void Field_ToString_RedContainsCorrectValues()
         {
             var uut = new Field(4, FieldColor.Red);
-            Assert.That(uut.ToString(), Is.StringMatching("4.*Red"));
+            Assert.That(uut.ToString().ToLower(), Is.StringMatching("4.*red"));
         }
     }
 }

@@ -8,66 +8,65 @@ namespace RouletteGame.Tests.Unit.Bets
     [TestFixture]
     public class ColorBetUnitTest
     {
-        [Test]
-        public void ColorBet_BlackWonIsTrue_2TimesBetAmountWon()
+        private StubField _stubField;
+        private ColorBet _uutBlack;
+        private ColorBet _uutRed;
+        private ColorBet _uutGreen;
+
+        [SetUp]
+        public void SetUp()
         {
-            var stubField = new StubField();
-            stubField.Color = FieldColor.Black;
-
-            var uut = new ColorBet("Pete Mitchell", 100, FieldColor.Black);
-            Assert.That(uut.WonAmount(stubField), Is.EqualTo(200));
-        }
-
-        [Test]
-        public void ColorBet_GreenWonIsTrue_2TimesBetAmountWon()
-        {
-            var stubField = new StubField();
-            stubField.Color = FieldColor.Green;
-
-            var uut = new ColorBet("Pete Mitchell", 100, FieldColor.Green);
-            Assert.That(uut.WonAmount(stubField), Is.EqualTo(200));
-        }
-
-        [Test]
-        public void ColorBet_RedWonIsTrue_2TimesBetAmountWon()
-        {
-            var stubField = new StubField();
-            stubField.Color = FieldColor.Red;
-
-            var uut = new ColorBet("Pete Mitchell", 100, FieldColor.Red);
-            Assert.That(uut.WonAmount(stubField), Is.EqualTo(200));
+            _stubField = new StubField();
+            _uutBlack = new ColorBet("Pete Mitchell", 100, FieldColor.Black);
+            _uutRed = new ColorBet("Pete Mitchell", 100, FieldColor.Red);
+            _uutGreen = new ColorBet("Pete Mitchell", 100, FieldColor.Green);
         }
 
         [Test]
         public void ColorBet_ToString_BlackBetContainsCorrectValues()
         {
-            var uut = new ColorBet("Pete Mitchell", 100, FieldColor.Black);
-            Assert.That(uut.ToString(), Is.StringMatching("100.*Black"));
+            Assert.That(_uutBlack.ToString().ToLower(), Is.StringMatching("100.*black"));
         }
 
 
         [Test]
         public void ColorBet_ToString_GreenBetContainsCorrectValues()
         {
-            var uut = new ColorBet("Pete Mitchell", 1000, FieldColor.Green);
-            Assert.That(uut.ToString(), Is.StringMatching("1000.*Green"));
+            Assert.That(_uutGreen.ToString().ToLower(), Is.StringMatching("100.*green"));
         }
 
         [Test]
         public void ColorBet_ToString_RedBetContainsCorrectValues()
         {
-            var uut = new ColorBet("Pete Mitchell", 50, FieldColor.Red);
-            Assert.That(uut.ToString(), Is.StringMatching("50.*Red"));
+            Assert.That(_uutRed.ToString().ToLower(), Is.StringMatching("100.*red"));
         }
 
-        [Test]
-        public void ColorBet_WonIsFalse_NothingWon()
+        [TestCase(FieldColor.Red, 0)]
+        [TestCase(FieldColor.Black, 200)]
+        [TestCase(FieldColor.Green, 0)]
+        public void BlackBet_DifferentFieldColors_WonAmountCorrect(FieldColor color, int wonAmount)
         {
-            var stubField = new StubField();
-            stubField.Color = FieldColor.Red;
+            _stubField.Color = color;
+            Assert.That(_uutBlack.WonAmount(_stubField), Is.EqualTo(wonAmount));
+        }
 
-            var uut = new ColorBet("Pete Mitchell", 100, FieldColor.Black);
-            Assert.That(uut.WonAmount(stubField), Is.EqualTo(0));
+
+        [TestCase(FieldColor.Red, 200)]
+        [TestCase(FieldColor.Black, 0)]
+        [TestCase(FieldColor.Green, 0)]
+        public void RedBet_DifferentFieldColors_WonAmountCorrect(FieldColor color, int wonAmount)
+        {
+            _stubField.Color = color;
+            Assert.That(_uutRed.WonAmount(_stubField), Is.EqualTo(wonAmount));
+        }
+
+        [TestCase(FieldColor.Red, 0)]
+        [TestCase(FieldColor.Black, 0)]
+        [TestCase(FieldColor.Green, 200)]
+        public void GreenBet_DifferentFieldColors_WonAmountCorrect(FieldColor color, int wonAmount)
+        {
+            _stubField.Color = color;
+            Assert.That(_uutGreen.WonAmount(_stubField), Is.EqualTo(wonAmount));
         }
     }
 }
