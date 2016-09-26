@@ -11,8 +11,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RouletteGame.Tests.Unit", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RouletteGame.Tests.Integration", "RouletteGame.Tests.Integration\RouletteGame.Tests.Integration.csproj", "{E853348C-F49D-440A-BF28-5C5AF113C3E1}"
 EndProject
-Project("{7CF6DF6D-3B04-46F8-A40B-537D21BCA0B4}") = "RouletteGame.Documentation", "RouletteGame.Documentation\RouletteGame.Documentation.shfbproj", "{2C4651D2-184A-4720-B394-A7FE4BFF4C7A}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -65,18 +63,6 @@ Global
 		{E853348C-F49D-440A-BF28-5C5AF113C3E1}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{E853348C-F49D-440A-BF28-5C5AF113C3E1}.Release|x86.ActiveCfg = Release|Any CPU
 		{E853348C-F49D-440A-BF28-5C5AF113C3E1}.Release|x86.Build.0 = Release|Any CPU
-		{2C4651D2-184A-4720-B394-A7FE4BFF4C7A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2C4651D2-184A-4720-B394-A7FE4BFF4C7A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2C4651D2-184A-4720-B394-A7FE4BFF4C7A}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{2C4651D2-184A-4720-B394-A7FE4BFF4C7A}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{2C4651D2-184A-4720-B394-A7FE4BFF4C7A}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{2C4651D2-184A-4720-B394-A7FE4BFF4C7A}.Debug|x86.Build.0 = Debug|Any CPU
-		{2C4651D2-184A-4720-B394-A7FE4BFF4C7A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2C4651D2-184A-4720-B394-A7FE4BFF4C7A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2C4651D2-184A-4720-B394-A7FE4BFF4C7A}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{2C4651D2-184A-4720-B394-A7FE4BFF4C7A}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{2C4651D2-184A-4720-B394-A7FE4BFF4C7A}.Release|x86.ActiveCfg = Release|Any CPU
-		{2C4651D2-184A-4720-B394-A7FE4BFF4C7A}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -52,7 +52,6 @@
     <Compile Include="Fakes\MockBlack1FieldFactory.cs" />
     <Compile Include="Fakes\MockFieldFactory.cs" />
     <Compile Include="Fakes\MockOutput.cs" />
-    <Compile Include="Fakes\NullOutput.cs" />
     <Compile Include="Fakes\StubField.cs" />
     <Compile Include="Fakes\StubRandomizer.cs" />
     <Compile Include="Fields\StandardFieldFactoryUnitTest.cs" />
@@ -75,9 +74,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="Settings.aiis" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties Name="RouletteGame.Tests.Unit" />
+    </VisualStudio>
+  </ProjectExtensions>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

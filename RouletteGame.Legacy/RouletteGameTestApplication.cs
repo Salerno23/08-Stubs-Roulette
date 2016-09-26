@@ -2,7 +2,7 @@
 {
     internal class RouletteGameTestApplication
     {
-        private static void Main(string[] args)
+        private static void Main()
         {
             var game = new RouletteGame(new Roulette());
             game.OpenBets();

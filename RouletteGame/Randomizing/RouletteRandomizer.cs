@@ -14,7 +14,8 @@ namespace RouletteGame.Randomizing
             _min = 0;
             _max = 37;
         }
-
+        
+        // Excluded from coverage - manual test required
         public uint Next()
         {
             return (uint) _random.Next(_min, _max);

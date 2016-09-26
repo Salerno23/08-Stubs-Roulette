@@ -1,10 +1,8 @@
 ﻿using NSubstitute;
-using NSubstitute.Routing.AutoValues;
 using NUnit.Framework;
 using RouletteGame.Bets;
 using RouletteGame.Fields;
 using RouletteGame.Output;
-using RouletteGame.Game;
 using RouletteGame.Randomizing;
 
 namespace RouletteGame.Tests.Integration

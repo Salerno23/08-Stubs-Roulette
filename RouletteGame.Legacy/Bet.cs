@@ -35,7 +35,7 @@
 
         public override string ToString()
         {
-            return string.Format("{0}$ field bet on {1}", Amount, _fieldNumber);
+            return $"{Amount}$ field bet on {_fieldNumber}";
         }
     }
 
@@ -71,7 +71,7 @@
                     break;
             }
 
-            return string.Format("{0}$ color bet on {1}", Amount, colorString);
+            return $"{Amount}$ color bet on {colorString}";
         }
     }
 
@@ -94,7 +94,7 @@
         {
             var evenOddString = _even ? "even" : "odd";
 
-            return string.Format("{0}$ even/odd bet on {1}", Amount, evenOddString);
+            return $"{Amount}$ even/odd bet on {evenOddString}";
         }
     }
 }
