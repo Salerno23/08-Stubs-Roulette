@@ -35,8 +35,9 @@ namespace RouletteGame.Tests.Integration
         {
             _game.OpenBets();
 
-            _game.PlaceBet(new EvenOddBet("Bjarne", 100, false));
-            _game.PlaceBet(new EvenOddBet("Bjarne", 100, true));
+            _game.PlaceBet(new EvenOddBet("Bjarne", 100, Parity.Even));
+            _game.PlaceBet(new EvenOddBet("Bjarne", 100, Parity.Odd));
+            _game.PlaceBet(new EvenOddBet("Bjarne", 100, Parity.Neither));
 
             _game.CloseBets();
             _game.SpinRoulette();
@@ -44,7 +45,7 @@ namespace RouletteGame.Tests.Integration
 
             _output.Received().Report(Arg.Is<string>(str =>
                 str.ToLower().Contains("bjarne") &&
-                str.ToLower().Contains("200")
+                str.ToLower().Contains("100")
                 ));
         }
 
