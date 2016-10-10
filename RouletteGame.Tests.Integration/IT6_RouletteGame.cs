@@ -51,6 +51,16 @@ namespace RouletteGame.Tests.Integration
         }
 
         [Test]
+        public void SpinRoulette_RouletteIsSpun_RandomizerCalled()
+        {
+            _game.OpenBets();
+            _game.CloseBets();
+            _game.SpinRoulette();
+
+            _randomizer.Received().Next();
+        }
+
+        [Test]
         public void SpinRoulette_RouletteIsSpun_RouletteIsReportedAsSpinning()
         {
             _randomizer.Next().Returns((uint)0);

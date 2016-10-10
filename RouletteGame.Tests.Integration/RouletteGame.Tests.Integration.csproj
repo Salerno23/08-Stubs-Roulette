@@ -52,6 +52,7 @@
     <Compile Include="IT2_3_4_BetsField.cs" />
     <Compile Include="IT5_RouletteRandomizer.cs" />
     <Compile Include="IT6_RouletteGame.cs" />
+    <Compile Include="IT7_RouletteGameRandomizer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
