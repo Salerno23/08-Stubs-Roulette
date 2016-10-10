@@ -6,10 +6,9 @@ namespace RouletteGame.Legacy
     {
         public const uint Red = 0;
         public const uint Black = 1;
-        public const uint Green = 1;
+        public const uint Green = 2;
 
         private uint _color;
-
         private uint _number;
 
         // Constructor
@@ -25,7 +24,7 @@ namespace RouletteGame.Legacy
             private set
             {
                 if (value <= 36) _number = value;
-                else throw new FieldException(string.Format("Number {0} not a valid field number", value));
+                else throw new FieldException($"Number {value} not a valid field number");
             }
         }
 
@@ -36,15 +35,11 @@ namespace RouletteGame.Legacy
             {
                 if (value == Red || value == Black || value == Green) _color = value;
                 else
-                    throw new FieldException(string.Format("Color {0} not a valid color. Must be either Red or Black",
-                        value));
+                    throw new FieldException($"Color {value} not a valid color. Must be either Red or Black");
             }
         }
 
-        public bool Even
-        {
-            get { return Number%2 == 0; }
-        }
+        public bool Even => Number%2 == 0;
 
         public override string ToString()
         {
@@ -63,7 +58,7 @@ namespace RouletteGame.Legacy
                     break;
             }
 
-            return string.Format("[{0}, {1}]", _number, colorString);
+            return $"[{_number}, {colorString}]";
         }
     }
 

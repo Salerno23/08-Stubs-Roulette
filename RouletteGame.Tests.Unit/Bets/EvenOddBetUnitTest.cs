@@ -1,64 +1,73 @@
 using NUnit.Framework;
 using RouletteGame.Bets;
+using RouletteGame.Fields;
 using RouletteGame.Tests.Unit.Fakes;
 
 namespace RouletteGame.Tests.Unit.Bets
 {
     [TestFixture]
-    public class EvenOddBetUnitTest
+    public class ParityBetUnitTest
     {
-        [Test]
-        public void ColorBet_ToString_EvenBetContainsCorrectValues()
+        private EvenOddBet _uutEven;
+        private EvenOddBet _uutOdd;
+        private EvenOddBet _uutNeither;
+
+        [SetUp]
+        public void SetUp()
         {
-            var uut = new EvenOddBet("Pete Mitchell", 100, true);
-            Assert.That(uut.ToString(), Is.StringMatching("100.*even"));
+            _uutEven = new EvenOddBet("Pete Mitchell", 100, Parity.Even);
+            _uutOdd = new EvenOddBet("Pete Mitchell", 100, Parity.Odd);
+            _uutNeither = new EvenOddBet("Pete Mitchell", 100, Parity.Neither);
         }
 
         [Test]
-        public void ColorBet_ToString_OddBetContainsCorrectValues()
+        public void EvenBet_ToString_EvenBetContainsCorrectValues()
         {
-            var uut = new EvenOddBet("Pete Mitchell", 100, false);
-            Assert.That(uut.ToString(), Is.StringMatching("100.*odd"));
+            Assert.That(_uutEven.ToString().ToLower(), Is.StringMatching("100.*even"));
         }
 
         [Test]
-        public void EvenOddBet_EvenBetWonIsFalse_NothingWon()
+        public void OddBet_ToString_EvenBetContainsCorrectValues()
         {
-            var stubField = new StubField();
-            stubField.Number = 3;
-
-            var uut = new EvenOddBet("Pete Mitchell", 100, true);
-            Assert.AreEqual(uut.WonAmount(stubField), 0);
+            Assert.That(_uutOdd.ToString().ToLower(), Is.StringMatching("100.*odd"));
         }
 
         [Test]
-        public void EvenOddBet_EvenBetWonIsTrue_2TimesBetAmountReturned()
+        public void NeitherBet_ToString_NeitherBetContainsCorrectValues()
         {
-            var stubField = new StubField();
-            stubField.Number = 2;
-
-            var uut = new EvenOddBet("Pete Mitchell", 100, true);
-            Assert.AreEqual(uut.WonAmount(stubField), 200);
+            Assert.That(_uutNeither.ToString().ToLower(), Is.StringMatching("100.*neither"));
         }
 
-        [Test]
-        public void EvenOddBet_OddBetWonIsFalse_NothingWon()
-        {
-            var stubField = new StubField();
-            stubField.Number = 2;
 
-            var uut = new EvenOddBet("Pete Mitchell", 100, false);
-            Assert.AreEqual(uut.WonAmount(stubField), 0);
+        [TestCase(Parity.Even, 200)]
+        [TestCase(Parity.Odd, 0)]
+        [TestCase(Parity.Neither, 0)]
+        public void EvenBet_DifferentFields_WonAmountCorrect(Parity parity, int wonAmount)
+        {
+            var stubField = new StubField { Parity = parity };
+            Assert.That(_uutEven.WonAmount(stubField), Is.EqualTo(wonAmount));
         }
 
-        [Test]
-        public void EvenOddBet_OddBetWonIsTrue_2TimesBetAmountReturned()
-        {
-            var stubField = new StubField();
-            stubField.Number = 3;
 
-            var uut = new EvenOddBet("Pete Mitchell", 100, false);
-            Assert.AreEqual(uut.WonAmount(stubField), 200);
+        [TestCase(Parity.Even, 0)]
+        [TestCase(Parity.Odd, 200)]
+        [TestCase(Parity.Neither, 0)]
+        public void OddBet_DifferentFields_WonAmountCorrect(Parity parity, int wonAmount)
+        {
+            var stubField = new StubField { Parity = parity };
+            Assert.That(_uutOdd.WonAmount(stubField), Is.EqualTo(wonAmount));
         }
+
+        [TestCase(Parity.Even, 0)]
+        [TestCase(Parity.Odd, 0)]
+        [TestCase(Parity.Neither, 200)]
+        public void NeitherBet_DifferentFields_WonAmountCorrect(Parity parity, int wonAmount)
+        {
+            var stubField = new StubField { Parity = parity };
+            Assert.That(_uutNeither.WonAmount(stubField), Is.EqualTo(wonAmount));
+        }
+
+
+
     }
 }

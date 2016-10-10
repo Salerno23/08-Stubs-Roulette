@@ -7,31 +7,27 @@ namespace RouletteGame.Tests.Unit.Bets
     [TestFixture]
     public class FieldBetUnitTest
     {
+        private FieldBet _uut;
+        private StubField _stubField;
+
+        [SetUp]
+        public void SetUp()
+        {
+            _uut = new FieldBet("Pete Mitchell", 100, 0);
+            _stubField = new StubField();
+        }
         [Test]
         public void FieldBet_ToString_ContainsCorrectValues()
         {
-            var uut = new FieldBet("Pete Mitchell", 100, 0);
-            Assert.That(uut.ToString(), Is.StringMatching("100.*0"));
+            Assert.That(_uut.ToString(), Is.StringMatching("100.*0"));
         }
 
-        [Test]
-        public void FieldBet_WonIsFalse_NothingWon()
+        [TestCase(0, 3600)]
+        [TestCase(1, 0)]
+        public void FieldBet_DifferentFields_WonAmountCorrect(int fieldNumber, int wonAmount)
         {
-            var stubField = new StubField();
-            stubField.Number = 1;
-
-            var uut = new FieldBet("Pete Mitchell", 100, 0);
-            Assert.AreEqual(uut.WonAmount(stubField), 0);
-        }
-
-        [Test]
-        public void FieldBet_WonIsTrue_36TimesBetAmountWon()
-        {
-            var stubField = new StubField();
-            stubField.Number = 0;
-
-            var uut = new FieldBet("Pete Mitchell", 100, 0);
-            Assert.AreEqual(uut.WonAmount(stubField), 3600);
+            _stubField.Number = (uint) fieldNumber;
+            Assert.That(_uut.WonAmount(_stubField), Is.EqualTo(wonAmount));
         }
     }
 }

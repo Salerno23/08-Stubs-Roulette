@@ -22,42 +22,32 @@ namespace RouletteGame.Tests.Integration
         }
 
 
-        [Test]
-        public void Spin_Field0Selected_NoExceptionThrown()
+        [TestCase(0)]
+        [TestCase(36)]
+        public void Spin_FieldNumberOK_Allowed(int number)
         {
-            _randomizer.Next().Returns((uint)0);
+            _randomizer.Next().Returns((uint)number);
             Assert.That(() => _uut.Spin(), Throws.Nothing);
         }
 
-        [Test]
-        public void Spin_Field36Selected_NoExceptionThrown()
-        {
-            _randomizer.Next().Returns((uint)36);
-            Assert.That(() => _uut.Spin(), Throws.Nothing);
-        }
 
         [Test]
-        public void Spin_Field37Selected_ExceptionThrown()
+        public void Spin_FieldNumberOutOfRange_NotAllowed()
         {
             _randomizer.Next().Returns((uint)37);
             Assert.That(() => _uut.Spin(), Throws.TypeOf<RouletteGameException>());
         }
 
-        [Test]
-        public void GetResult_Field0Selected_FieldIsGreen()
+        [TestCase(0, FieldColor.Green)]
+        [TestCase(1, FieldColor.Red)]
+        [TestCase(2, FieldColor.Black)]
+        public void GetResult_DifferentFieldsAsResult_FieldColorIsCorrect(int fieldNumber, FieldColor color)
         {
-            _randomizer.Next().Returns((uint)0);
+            _randomizer.Next().Returns((uint)fieldNumber);
             _uut.Spin();
-            Assert.That(_uut.GetResult().Color, Is.EqualTo(FieldColor.Green));
+            Assert.That(_uut.GetResult().Color, Is.EqualTo(color));
         }
 
 
-        [Test]
-        public void GetResult_Field0Selected_FieldnumberIs0()
-        {
-            _randomizer.Next().Returns((uint)0);
-            _uut.Spin();
-            Assert.That(_uut.GetResult().Number, Is.EqualTo(0));
-        }
     }
 }

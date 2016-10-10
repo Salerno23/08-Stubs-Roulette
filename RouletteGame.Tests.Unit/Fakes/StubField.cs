@@ -6,10 +6,6 @@ namespace RouletteGame.Tests.Unit.Fakes
     {
         public uint Number { get; set; }
         public FieldColor Color { get; set; }
-
-        public bool Even
-        {
-            get { return Number%2 == 0; }
-        }
+        public Parity Parity { get; set; }
     }
 }

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using RouletteGame.Bets;
 using RouletteGame.Fields;
 
@@ -26,7 +21,7 @@ namespace RouletteGame.Tests.Integration
             _loseField = new Field(11, FieldColor.Black);       // 11, odd, black
             _fieldBet = new FieldBet("John Doe", BetAmount, 10);
             _colorBet = new ColorBet("John Doe", BetAmount, FieldColor.Red);
-            _evenOddBet = new EvenOddBet("John Doe", BetAmount, true);
+            _evenOddBet = new EvenOddBet("John Doe", BetAmount, Parity.Even);
         }
 
         #region FieldBet

@@ -1,5 +1,4 @@
 ﻿using NUnit.Framework;
-using NUnit.Framework.Internal;
 using RouletteGame.Fields;
 using RouletteGame.Randomizing;
 
@@ -50,10 +49,10 @@ namespace RouletteGame.Tests.Integration
         public void Spin_FieldEvenOddIsWithinBounds()
         {
             _roulette.Spin();
-            Assert.That(_roulette.GetResult().Even, Is.False.Or.True);
+            Assert.That(_roulette.GetResult().Parity, Is.
+                EqualTo(Parity.Even).Or.
+                EqualTo(Parity.Odd).Or.
+                EqualTo(Parity.Neither));
         }
     }
-
-
 }
-

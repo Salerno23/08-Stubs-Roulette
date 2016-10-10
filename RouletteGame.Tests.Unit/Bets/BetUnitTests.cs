@@ -6,18 +6,23 @@ namespace RouletteGame.Tests.Unit.Bets
     [TestFixture]
     public class BetUnitTest
     {
+        private FieldBet _uut;  // Use a derivative of UUT type to test UUT functionality
+
+        [SetUp]
+        public void SetUp()
+        {
+            _uut = new FieldBet("Pete Mitchell", 100, 0);
+        }
         [Test]
         public void Bet_Create_AmountIsOK()
         {
-            var uut = new FieldBet("Pete Mitchell", 100, 0);
-            Assert.AreEqual(uut.Amount, 100);
+            Assert.That(_uut.Amount, Is.EqualTo(100));
         }
 
         [Test]
         public void Bet_Create_NameIsOK()
         {
-            var uut = new FieldBet("Pete Mitchell", 100, 0); // Use FieldBet to test superclass Bet properties
-            Assert.AreEqual(uut.PlayerName, "Pete Mitchell");
+            Assert.That(_uut.PlayerName, Is.EqualTo("Pete Mitchell"));
         }
     }
 }

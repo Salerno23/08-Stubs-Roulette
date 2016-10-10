@@ -1,10 +1,8 @@
 ﻿using NSubstitute;
-using NSubstitute.Routing.AutoValues;
 using NUnit.Framework;
 using RouletteGame.Bets;
 using RouletteGame.Fields;
 using RouletteGame.Output;
-using RouletteGame.Game;
 using RouletteGame.Randomizing;
 
 namespace RouletteGame.Tests.Integration
@@ -16,7 +14,7 @@ namespace RouletteGame.Tests.Integration
         private Roulette.Roulette _roulette;
         private IOutput _output;
         private IRandomizer _randomizer;
-        private readonly IBet _evenOddBet = new EvenOddBet("Berit", 100, true);
+        private readonly IBet _evenOddBet = new EvenOddBet("Berit", 100, Parity.Even);
         private readonly IBet _colorBet = new ColorBet("Bente", 100, FieldColor.Black);
         private readonly IBet _fieldBet = new FieldBet("Bjarne", 100, 2);
         [SetUp]
