@@ -1,14 +1,14 @@
+using NSubstitute;
 using NUnit.Framework;
 using RouletteGame.Bets;
 using RouletteGame.Fields;
-using RouletteGame.Tests.Unit.Fakes;
 
 namespace RouletteGame.Tests.Unit.Bets
 {
     [TestFixture]
     public class ColorBetUnitTest
     {
-        private StubField _stubField;
+        private IField _stubField;
         private ColorBet _uutBlack;
         private ColorBet _uutRed;
         private ColorBet _uutGreen;
@@ -16,7 +16,7 @@ namespace RouletteGame.Tests.Unit.Bets
         [SetUp]
         public void SetUp()
         {
-            _stubField = new StubField();
+            _stubField = Substitute.For<IField>();
             _uutBlack = new ColorBet("Pete Mitchell", 100, FieldColor.Black);
             _uutRed = new ColorBet("Pete Mitchell", 100, FieldColor.Red);
             _uutGreen = new ColorBet("Pete Mitchell", 100, FieldColor.Green);
@@ -46,7 +46,7 @@ namespace RouletteGame.Tests.Unit.Bets
         [TestCase(FieldColor.Green, 0)]
         public void BlackBet_DifferentFieldColors_WonAmountCorrect(FieldColor color, int wonAmount)
         {
-            _stubField.Color = color;
+            _stubField.Color.Returns(color);
             Assert.That(_uutBlack.WonAmount(_stubField), Is.EqualTo(wonAmount));
         }
 
@@ -56,7 +56,7 @@ namespace RouletteGame.Tests.Unit.Bets
         [TestCase(FieldColor.Green, 0)]
         public void RedBet_DifferentFieldColors_WonAmountCorrect(FieldColor color, int wonAmount)
         {
-            _stubField.Color = color;
+            _stubField.Color.Returns(color);
             Assert.That(_uutRed.WonAmount(_stubField), Is.EqualTo(wonAmount));
         }
 
@@ -65,7 +65,7 @@ namespace RouletteGame.Tests.Unit.Bets
         [TestCase(FieldColor.Green, 200)]
         public void GreenBet_DifferentFieldColors_WonAmountCorrect(FieldColor color, int wonAmount)
         {
-            _stubField.Color = color;
+            _stubField.Color.Returns(color);
             Assert.That(_uutGreen.WonAmount(_stubField), Is.EqualTo(wonAmount));
         }
     }

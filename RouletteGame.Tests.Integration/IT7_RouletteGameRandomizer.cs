@@ -31,6 +31,21 @@ namespace RouletteGame.Tests.Integration
         }
 
         [Test]
+        public void SpinRoulette_AllResultsPossible_ShowSomeResult()
+        {
+            _game.OpenBets();
+            _game.CloseBets();
+            _game.SpinRoulette();
+            _output.Received().Report(Arg.Is<string>(str =>
+                str.ToLower().Contains("result:") &&
+                (str.ToLower().Contains("black") ||
+                 str.ToLower().Contains("red") ||
+                 str.ToLower().Contains("green"))
+                ));
+
+        }
+
+        [Test]
         public void PayUp_AllEvenOddBets_ShowSomeWinner()
         {
             _game.OpenBets();
@@ -43,7 +58,7 @@ namespace RouletteGame.Tests.Integration
             _game.SpinRoulette();
             _game.PayUp();
 
-            _output.Received().Report(Arg.Is<string>(str =>
+            _output.Received(1).Report(Arg.Is<string>(str =>
                 str.ToLower().Contains("bjarne") &&
                 str.ToLower().Contains("100")
                 ));

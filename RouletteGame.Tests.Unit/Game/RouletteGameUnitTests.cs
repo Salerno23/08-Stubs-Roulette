@@ -1,9 +1,13 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using NSubstitute;
+using NSubstitute.Extensions;
 using NUnit.Framework;
 using RouletteGame.Bets;
 using RouletteGame.Fields;
 using RouletteGame.Game;
-using RouletteGame.Tests.Unit.Fakes;
+using RouletteGame.Output;
+using RouletteGame.Roulette;
 
 namespace RouletteGame.Tests.Unit.Game
 {
@@ -11,26 +15,39 @@ namespace RouletteGame.Tests.Unit.Game
     public class RouletteGameUnitTest
     {
         private RouletteGame.Game.Game _uut;
+        private IRoulette _fakeRoulette;
+        private IOutput _fakeOutput;
 
         [SetUp]
         public void Setup()
         {
-            _uut = new RouletteGame.Game.Game(new MockRoulette(), new MockOutput());
+            // Make fresh copies for each test
+            _fakeRoulette = Substitute.For<IRoulette>();
+            _fakeOutput = Substitute.For<IOutput>();
+            _uut = new RouletteGame.Game.Game(_fakeRoulette, _fakeOutput);
         }
 
-
         [Test]
-        public void Ctor_BetPlaced_NotAllowed()
-        {
-            Assert.Throws<RouletteGameException>(() => _uut.PlaceBet(new MockBet()));
-        }
-
-
-        [Test]
-        public void PlaceBets_RoundIsOpen_Allowed()
+        public void OpenBets_BetsOpened_BetsAreAnnouncedAsOpen()
         {
             _uut.OpenBets();
-            Assert.DoesNotThrow(() => _uut.PlaceBet(new MockBet()));
+            _fakeOutput.Received().Report(Arg.Is<string>(str =>
+                str.ToLower().Contains("open")
+                ));
+        }
+
+        [Test]
+        public void PlaceBet_CtorRoundNotOpen_NotAllowed()
+        {
+            Assert.Throws<RouletteGameException>(() => _uut.PlaceBet(Substitute.For<IBet>()));
+        }
+
+
+        [Test]
+        public void PlaceBet_RoundIsOpen_Allowed()
+        {
+            _uut.OpenBets();
+            Assert.DoesNotThrow(() => _uut.PlaceBet(Substitute.For<IBet>()));
         }
 
         [Test]
@@ -38,33 +55,88 @@ namespace RouletteGame.Tests.Unit.Game
         {
             _uut.OpenBets();
             _uut.CloseBets();
-            Assert.Throws<RouletteGameException>(() => _uut.PlaceBet(new MockBet()));
+            Assert.Throws<RouletteGameException>(() => _uut.PlaceBet(Substitute.For<IBet>()));
+        }
+
+        [Test]
+        public void CloseBets_BetsClose_BetsAreAnnouncedAsClosed()
+        {
+            _uut.OpenBets();
+            _uut.CloseBets();
+            _fakeOutput.Received().Report(Arg.Is<string>(str =>
+                str.ToLower().Contains("closed")
+                ));
+        }
+
+        [Test]
+        public void SpinRoulette_CtorRoundNotOpened_SpinAllowed()
+        {
+            // Nothing has happened
+            // TBD - what should happen on a spin?
+            Assert.That(() => _uut.SpinRoulette(), Throws.Nothing);
+        }
+
+        [Test]
+        public void SpinRoulette_RouletteIsSpun_RouletteIsReportedAsSpinning()
+        {
+            _uut.OpenBets();
+            _uut.CloseBets();
+            _uut.SpinRoulette();
+            _fakeOutput.Received().Report(Arg.Is<string>(str =>
+                str.ToLower().Contains("spinning")
+                ));
+        }
+
+        [Test]
+        public void SpinRoulette_BetsClosed_RouletteIsSpun()
+        {
+            _uut.OpenBets();
+            _uut.CloseBets();
+            _uut.SpinRoulette();
+
+            _fakeRoulette.Received().Spin();
+        }
+
+
+        [Test]
+        public void SpinRoulette_RoundOpen_SpinNotAllowed()
+        {
+            _uut.OpenBets();
+
+            Assert.That(() => _uut.SpinRoulette(), Throws.TypeOf<RouletteGameException>());
+        }
+
+        [Test]
+        public void SpinRoulette_RouletteSpun_ResultFieldAnnounced()
+        {
+            _uut.OpenBets();
+            _uut.CloseBets();
+            _uut.SpinRoulette();
+            _fakeOutput.Received(1).Report(Arg.Is<string>(str =>
+                str.ToLower().Contains("result: ")
+                ));
         }
 
         [Test]
         public void PayUp_1BetPlaced_BetQueriedForWonAmount()
         {
-            var bet = new MockBet { Amount = 100, PlayerName = "Pete Mitchell" };
-            var field = new StubField { Number = 10, Color = FieldColor.Red };
+            var bet = Substitute.For<IBet>();
 
-            var roulette = new MockRoulette(field);
-            var uut = new RouletteGame.Game.Game(roulette, new MockOutput());
-            uut.OpenBets();
-            uut.PlaceBet(bet);
-            uut.CloseBets();
-            uut.SpinRoulette();
+            _uut.OpenBets();
+            _uut.PlaceBet(bet);
+            _uut.CloseBets();
+            _uut.SpinRoulette();
 
-            uut.PayUp();
-            Assert.That(bet.WonAmountCalled, Is.True);
+            _uut.PayUp();
+            bet.Received().WonAmount(Arg.Any<IField>());
         }
 
         [Test]
         public void PayUp_10BetsPlaced_AllBetsQueriedForWonAmount()
         {
-            var allBetsQueried = true;
-            var bets = new List<MockBet>();
+            var bets = new List<IBet>();
             for (uint i = 0; i < 10; i++)
-                bets.Add(new MockBet());
+                bets.Add(Substitute.For<IBet>());
 
             _uut.OpenBets();
             foreach (var bet in bets)
@@ -75,66 +147,73 @@ namespace RouletteGame.Tests.Unit.Game
             _uut.PayUp();
 
             foreach (var bet in bets)
-                allBetsQueried &= bet.WonAmountCalled;
-
-            Assert.That(allBetsQueried, Is.True);
+            {
+                bet.Received().WonAmount(Arg.Any<IField>());
+            }
         }
 
 
         [Test]
         public void PayUp_RoundPlayed_RouletteQueriedForResult()
         {
-            var field = new StubField {Number = 10, Color = FieldColor.Red};
-            var roulette = new MockRoulette(field);
-            var uut = new RouletteGame.Game.Game(roulette, new MockOutput());
+            _uut.OpenBets();
+            _uut.CloseBets();
+            _uut.SpinRoulette();
 
-            uut.OpenBets();
-            uut.CloseBets();
-            uut.SpinRoulette();
+            _uut.PayUp();
 
-            uut.PayUp();
-            Assert.That(roulette.GetResultCalled, Is.True);
+            _fakeRoulette.Received().GetResult();
         }
 
         [Test]
         public void PayUp_WinningBetPlaced_ReportContainsPlayerName()
         {
-            var bet = new ColorBet("Pete Mitchell", 100, FieldColor.Red);
-            var field = new StubField {Number = 10, Color = FieldColor.Red};
-            var reporter = new MockOutput();
+            var bet = Substitute.For<IBet>();
 
-            var roulette = new MockRoulette(field);
-            var uut = new RouletteGame.Game.Game(roulette, reporter);
-            uut.OpenBets();
-            uut.PlaceBet(bet);
-            uut.CloseBets();
-            uut.SpinRoulette();
+            bet.PlayerName.Returns("Pete Mitchell");
+            bet.WonAmount(Arg.Any<IField>()).Returns(100U);
 
-            uut.PayUp();
-            Assert.That(reporter.ArgUsed, Contains.Substring("Pete Mitchell"));
+            _uut.OpenBets();
+            _uut.PlaceBet(bet);
+            _uut.CloseBets();
+            _uut.SpinRoulette();
+
+            _uut.PayUp();
+
+            _fakeOutput.Received().Report(Arg.Is<string>(str => str.Contains("Pete Mitchell")));
         }
-
 
         [Test]
-        public void RouletteGame_SpinRoulette_RouletteSpun()
-        {
-            var roulette = new MockRoulette();
-            var uut = new RouletteGame.Game.Game(roulette, new MockOutput());
-            uut.OpenBets();
-            uut.CloseBets();
-            uut.SpinRoulette();
+        public void Payup_InSecondRoundOfPlay_OldBetsNoMoreValid()
+        { 
+            var oldBet = Substitute.For<IBet>();
 
-            Assert.That(roulette.SpinCalled, Is.True);
+            _uut.OpenBets();
+            _uut.PlaceBet(oldBet);
+            _uut.CloseBets();
+            _uut.SpinRoulette();
+
+            _uut.PayUp();
+
+            // Simulate a new round
+            var newBet = Substitute.For<IBet>();
+
+            _uut.OpenBets();
+            _uut.PlaceBet(newBet);
+            _uut.CloseBets();
+            _uut.SpinRoulette();
+
+            _uut.PayUp();
+
+            // Old bet should only be used once
+            oldBet.Received(1).WonAmount(Arg.Any<IField>());
+            // And so should new bet
+            newBet.Received(1).WonAmount(Arg.Any<IField>());
+
+
         }
 
 
-        [Test]
-        public void Spin_RoundOpen_SpinNotAllowed()
-        {
-            var uut = new RouletteGame.Game.Game(new MockRoulette(), new MockOutput());
-            uut.OpenBets();
 
-            Assert.That(() => uut.SpinRoulette(), Throws.TypeOf<RouletteGameException>());
-        }
     }
 }

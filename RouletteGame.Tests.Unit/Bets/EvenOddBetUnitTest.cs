@@ -1,7 +1,7 @@
+using NSubstitute;
 using NUnit.Framework;
 using RouletteGame.Bets;
 using RouletteGame.Fields;
-using RouletteGame.Tests.Unit.Fakes;
 
 namespace RouletteGame.Tests.Unit.Bets
 {
@@ -11,6 +11,7 @@ namespace RouletteGame.Tests.Unit.Bets
         private EvenOddBet _uutEven;
         private EvenOddBet _uutOdd;
         private EvenOddBet _uutNeither;
+        private IField _stubField;
 
         [SetUp]
         public void SetUp()
@@ -18,6 +19,7 @@ namespace RouletteGame.Tests.Unit.Bets
             _uutEven = new EvenOddBet("Pete Mitchell", 100, Parity.Even);
             _uutOdd = new EvenOddBet("Pete Mitchell", 100, Parity.Odd);
             _uutNeither = new EvenOddBet("Pete Mitchell", 100, Parity.Neither);
+            _stubField = Substitute.For<IField>();
         }
 
         [Test]
@@ -44,8 +46,8 @@ namespace RouletteGame.Tests.Unit.Bets
         [TestCase(Parity.Neither, 0)]
         public void EvenBet_DifferentFields_WonAmountCorrect(Parity parity, int wonAmount)
         {
-            var stubField = new StubField { Parity = parity };
-            Assert.That(_uutEven.WonAmount(stubField), Is.EqualTo(wonAmount));
+            _stubField.Parity.Returns(parity);
+            Assert.That(_uutEven.WonAmount(_stubField), Is.EqualTo(wonAmount));
         }
 
 
@@ -54,8 +56,8 @@ namespace RouletteGame.Tests.Unit.Bets
         [TestCase(Parity.Neither, 0)]
         public void OddBet_DifferentFields_WonAmountCorrect(Parity parity, int wonAmount)
         {
-            var stubField = new StubField { Parity = parity };
-            Assert.That(_uutOdd.WonAmount(stubField), Is.EqualTo(wonAmount));
+            _stubField.Parity.Returns(parity);
+            Assert.That(_uutOdd.WonAmount(_stubField), Is.EqualTo(wonAmount));
         }
 
         [TestCase(Parity.Even, 0)]
@@ -63,8 +65,8 @@ namespace RouletteGame.Tests.Unit.Bets
         [TestCase(Parity.Neither, 200)]
         public void NeitherBet_DifferentFields_WonAmountCorrect(Parity parity, int wonAmount)
         {
-            var stubField = new StubField { Parity = parity };
-            Assert.That(_uutNeither.WonAmount(stubField), Is.EqualTo(wonAmount));
+            _stubField.Parity.Returns(parity);
+            Assert.That(_uutNeither.WonAmount(_stubField), Is.EqualTo(wonAmount));
         }
 
 

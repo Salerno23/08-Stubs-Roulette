@@ -1,6 +1,7 @@
+using NSubstitute;
 using NUnit.Framework;
 using RouletteGame.Bets;
-using RouletteGame.Tests.Unit.Fakes;
+using RouletteGame.Fields;
 
 namespace RouletteGame.Tests.Unit.Bets
 {
@@ -8,13 +9,13 @@ namespace RouletteGame.Tests.Unit.Bets
     public class FieldBetUnitTest
     {
         private FieldBet _uut;
-        private StubField _stubField;
+        private IField _stubField;
 
         [SetUp]
         public void SetUp()
         {
             _uut = new FieldBet("Pete Mitchell", 100, 0);
-            _stubField = new StubField();
+            _stubField = Substitute.For<IField>();
         }
         [Test]
         public void FieldBet_ToString_ContainsCorrectValues()
@@ -26,7 +27,7 @@ namespace RouletteGame.Tests.Unit.Bets
         [TestCase(1, 0)]
         public void FieldBet_DifferentFields_WonAmountCorrect(int fieldNumber, int wonAmount)
         {
-            _stubField.Number = (uint) fieldNumber;
+            _stubField.Number.Returns((uint) fieldNumber);
             Assert.That(_uut.WonAmount(_stubField), Is.EqualTo(wonAmount));
         }
     }

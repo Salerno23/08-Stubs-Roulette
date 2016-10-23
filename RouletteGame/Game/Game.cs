@@ -22,6 +22,8 @@ namespace RouletteGame.Game
 
         public void OpenBets()
         {
+            // Clear old bets
+            _bets.Clear();
             _output.Report("Round is open for bets");
             _roundIsOpen = true;
         }
