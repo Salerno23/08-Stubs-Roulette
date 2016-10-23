@@ -32,6 +32,10 @@ namespace RouletteGame.Tests.Unit.Roulette
             fakeList[1].Color.Returns(FieldColor.Red);
             fakeList[2].Color.Returns(FieldColor.Black);
 
+            fakeList[0].Parity.Returns(Parity.Neither);
+            fakeList[1].Parity.Returns(Parity.Odd);
+            fakeList[2].Parity.Returns(Parity.Even);
+
             fakeFieldFactory = Substitute.For<IFieldFactory>();
             fakeFieldFactory.CreateFields().Returns(fakeList);
 
