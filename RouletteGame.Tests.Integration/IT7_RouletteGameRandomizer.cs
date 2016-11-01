@@ -16,18 +16,15 @@ namespace RouletteGame.Tests.Integration
     class IT7_RouletteGameRandomizer
     {
         private Game.Game _game;
-        private Roulette.Roulette _roulette;
         private IOutput _output;
-        private IRandomizer _randomizer;
 
         [SetUp]
         public void SetUp()
         {
-            _randomizer = Substitute.For<IRandomizer>();
             _output = Substitute.For<IOutput>();
 
-            _roulette = new Roulette.Roulette(new StandardFieldFactory(), _randomizer);
-            _game = new Game.Game(_roulette, _output);
+            var roulette = new Roulette.Roulette(new StandardFieldFactory(), new RouletteRandomizer());
+            _game = new Game.Game(roulette, _output);
         }
 
         [Test]
