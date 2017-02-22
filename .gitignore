@@ -156,3 +156,4 @@ $RECYCLE.BIN/
 .DS_Store
 doc/10 - Fakes 1, stubs (Roulette).pdf
 RouletteGame.Tests.Unit/RouletteGame.Tests.Unit.VisualState.xml
+/RouletteGame.Legacy.zip
