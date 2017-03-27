@@ -11,8 +11,7 @@ namespace RouletteGame.Tests.Unit.Fields
         public void FieldFactory_CreateFields_CountOK()
         {
             var uut = new StandardFieldFactory();
-            // Make this test fail for Jenkins demonstration
-            Assert.That(uut.CreateFields().Count, Is.EqualTo(38));
+            Assert.That(uut.CreateFields().Count, Is.EqualTo(37));
         }
 
         [TestCase(0, FieldColor.Green)]
