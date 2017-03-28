@@ -60,10 +60,6 @@
     <Compile Include="Roulette\RouletteUnitTests.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\RouletteGame.Legacy\RouletteGame.Legacy.csproj">
-      <Project>{8DB02F2D-DF86-4A3B-B94D-0374C1ECB9ED}</Project>
-      <Name>RouletteGame.Legacy</Name>
-    </ProjectReference>
     <ProjectReference Include="..\RouletteGame\RouletteGame.csproj">
       <Project>{6603448a-0a93-4bb9-99dc-000fa59466f5}</Project>
       <Name>RouletteGame</Name>
