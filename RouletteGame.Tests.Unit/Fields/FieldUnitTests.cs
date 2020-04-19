@@ -46,21 +46,21 @@ namespace RouletteGame.Tests.Unit.Fields
         public void Field_ToString_BlackContainsCorrectValues()
         {
             var uut = new Field(3, FieldColor.Black);
-            Assert.That(uut.ToString().ToLower(), Is.StringMatching("3.*black"));
+            Assert.That(uut.ToString().ToLower(), Does.Match("3.*black"));
         }
 
         [Test]
         public void Field_ToString_GreenContainsCorrectValues()
         {
             var uut = new Field(0, FieldColor.Green);
-            Assert.That(uut.ToString().ToLower(), Is.StringMatching("0.*green"));
+            Assert.That(uut.ToString().ToLower(), Does.Match("0.*green"));
         }
 
         [Test]
         public void Field_ToString_RedContainsCorrectValues()
         {
             var uut = new Field(4, FieldColor.Red);
-            Assert.That(uut.ToString().ToLower(), Is.StringMatching("4.*red"));
+            Assert.That(uut.ToString().ToLower(), Does.Match("4.*red"));
         }
     }
 }

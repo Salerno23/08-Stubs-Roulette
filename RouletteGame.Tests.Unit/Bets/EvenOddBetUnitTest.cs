@@ -25,19 +25,19 @@ namespace RouletteGame.Tests.Unit.Bets
         [Test]
         public void EvenBet_ToString_EvenBetContainsCorrectValues()
         {
-            Assert.That(_uutEven.ToString().ToLower(), Is.StringMatching("100.*even"));
+            Assert.That(_uutEven.ToString().ToLower(), Does.Match("100.*even"));
         }
 
         [Test]
         public void OddBet_ToString_EvenBetContainsCorrectValues()
         {
-            Assert.That(_uutOdd.ToString().ToLower(), Is.StringMatching("100.*odd"));
+            Assert.That(_uutOdd.ToString().ToLower(), Does.Match("100.*odd"));
         }
 
         [Test]
         public void NeitherBet_ToString_NeitherBetContainsCorrectValues()
         {
-            Assert.That(_uutNeither.ToString().ToLower(), Is.StringMatching("100.*neither"));
+            Assert.That(_uutNeither.ToString().ToLower(), Does.Match("100.*neither"));
         }
 
 

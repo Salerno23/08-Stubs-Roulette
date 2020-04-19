@@ -22,19 +22,22 @@ namespace RouletteGame.Application
 
             RouletteGame.Game.Game game = new RouletteGame.Game.Game(roulette, output);
 
-            game.OpenBets();
-            game.PlaceBet(new ColorBet("Player 1", 100, FieldColor.Black));
-            game.PlaceBet(new ColorBet("Player 1", 100, FieldColor.Red));
+            for (Int16 I = 0; I < 100; I++)
+            {
+                game.OpenBets();
+                game.PlaceBet(new ColorBet("Player 1", 100, FieldColor.Black));
+                game.PlaceBet(new ColorBet("Player 1", 100, FieldColor.Red));
 
-            game.PlaceBet(new EvenOddBet("Player 2", 100, Parity.Even));
-            game.PlaceBet(new EvenOddBet("Player 2", 100, Parity.Odd));
+                game.PlaceBet(new EvenOddBet("Player 2", 100, Parity.Even));
+                game.PlaceBet(new EvenOddBet("Player 2", 100, Parity.Odd));
 
-            for (uint i = 0; i < 36; i++)
-                game.PlaceBet(new FieldBet("Player 3", 100, i));
+                for (uint i = 0; i < 36; i++)
+                    game.PlaceBet(new FieldBet("Player 3", 100, i));
 
-            game.CloseBets();
-            game.SpinRoulette();
-            game.PayUp();
+                game.CloseBets();
+                game.SpinRoulette();
+                game.PayUp();
+            }
         }
     }
 }

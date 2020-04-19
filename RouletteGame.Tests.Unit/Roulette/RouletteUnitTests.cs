@@ -14,7 +14,7 @@ namespace RouletteGame.Tests.Unit.Roulette
         private IRandomizer fakeRandomizer;
         private IFieldFactory fakeFieldFactory;
 
-        [TestFixtureSetUp]
+        [OneTimeSetUp]
         public void FixtureSetup()
         {
             fakeList = new List<IField>

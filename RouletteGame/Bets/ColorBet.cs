@@ -13,7 +13,7 @@ namespace RouletteGame.Bets
 
         public override uint WonAmount(IField field)
         {
-            if (field.Color == _color) return 2*Amount;
+            if (field != null && field.Color == _color) return 2*Amount;
             return 0;
         }
 

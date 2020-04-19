@@ -20,7 +20,7 @@ namespace RouletteGame.Tests.Unit.Bets
         [Test]
         public void FieldBet_ToString_ContainsCorrectValues()
         {
-            Assert.That(_uut.ToString(), Is.StringMatching("100.*0"));
+            Assert.That(_uut.ToString(), Does.Match("100.*0"));
         }
 
         [TestCase(0, 3600)]

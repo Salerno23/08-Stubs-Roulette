@@ -25,20 +25,20 @@ namespace RouletteGame.Tests.Unit.Bets
         [Test]
         public void ColorBet_ToString_BlackBetContainsCorrectValues()
         {
-            Assert.That(_uutBlack.ToString().ToLower(), Is.StringMatching("100.*black"));
+            Assert.That(_uutBlack.ToString().ToLower(), Does.Match("100.*black"));
         }
 
 
         [Test]
         public void ColorBet_ToString_GreenBetContainsCorrectValues()
         {
-            Assert.That(_uutGreen.ToString().ToLower(), Is.StringMatching("100.*green"));
+            Assert.That(_uutGreen.ToString().ToLower(), Does.Match("100.*green"));
         }
 
         [Test]
         public void ColorBet_ToString_RedBetContainsCorrectValues()
         {
-            Assert.That(_uutRed.ToString().ToLower(), Is.StringMatching("100.*red"));
+            Assert.That(_uutRed.ToString().ToLower(), Does.Match("100.*red"));
         }
 
         [TestCase(FieldColor.Red, 0)]
