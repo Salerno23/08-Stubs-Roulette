@@ -28,40 +28,7 @@ namespace RouletteGame.Tests.Integration
             _game = new Game.Game(_roulette, _output);
         }
 
-        [Test]
-        public void SpinRoulette_CtorRoundNotOpened_SpinAllowed()
-        {
-            // Nothing has happened
-            // TBD - what should happen on a spin?
-            Assert.That(() => _game.SpinRoulette(), Throws.Nothing);
-        }
-
-        [Test]
-        public void SpinRoulette_RouletteIsSpun_RandomizerCalled()
-        {
-            _game.OpenBets();
-            _game.CloseBets();
-            _game.SpinRoulette();
-
-            _randomizer.Received().Next();
-        }
-
-        [Test]
-        public void SpinRoulette_RouletteIsSpun_ResultFieldAnnounced()
-        {
-            _randomizer.Next().Returns((uint)2);
-
-            _game.OpenBets();
-            _game.CloseBets();
-            _game.SpinRoulette();
-            // Field number 2 has number2, black, even
-            _output.Received().Report(Arg.Is<string>(str =>
-                str.ToLower().Contains("result:") &&
-                str.ToLower().Contains("2") &&
-                str.ToLower().Contains("black")
-                ));
-        }
-
+        #region Bottom Up - 6A: RouletteGame <-> All Bet classes
 
         [Test]
         public void PayUp_EvenOddBetPlaced_WinnerIsAnnouncedCorrectly()
@@ -189,6 +156,11 @@ namespace RouletteGame.Tests.Integration
 
         }
 
+        #endregion
+
+
+        #region Bottom Up - 6B: RouletteGame <-> Roulette
+
         [Test]
         public void PayUp_CtorRouletteNotSpun_ThrowsFromRoulette()
         {
@@ -203,6 +175,42 @@ namespace RouletteGame.Tests.Integration
             Assert.That(() => _game.SpinRoulette(), Throws.TypeOf<RouletteGameException>());
         }
 
+
+        [Test]
+        public void SpinRoulette_CtorRoundNotOpened_SpinAllowed()
+        {
+            // Nothing has happened
+            // TBD - what should happen on a spin?
+            Assert.That(() => _game.SpinRoulette(), Throws.Nothing);
+        }
+
+        [Test]
+        public void SpinRoulette_RouletteIsSpun_RandomizerCalled()
+        {
+            _game.OpenBets();
+            _game.CloseBets();
+            _game.SpinRoulette();
+
+            _randomizer.Received().Next();
+        }
+
+        [Test]
+        public void SpinRoulette_RouletteIsSpun_ResultFieldAnnounced()
+        {
+            _randomizer.Next().Returns((uint)2);
+
+            _game.OpenBets();
+            _game.CloseBets();
+            _game.SpinRoulette();
+            // Field number 2 has number2, black, even
+            _output.Received().Report(Arg.Is<string>(str =>
+                str.ToLower().Contains("result:") &&
+                str.ToLower().Contains("2") &&
+                str.ToLower().Contains("black")
+            ));
+        }
+        
+        #endregion
 
 
     }
