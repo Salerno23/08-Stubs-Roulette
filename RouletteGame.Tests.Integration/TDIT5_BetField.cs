@@ -74,5 +74,67 @@ namespace RouletteGame.Tests.Integration
             _fakeOutput.DidNotReceive().Report(Arg.Is<string>(s => s.Contains("Bente")));
         }
 
+        [Test]
+        public void ColorBet_CorrectColor_AmountCorrect()
+        {
+            _fakeRandomizer.Next().Returns(2U);
+
+            _rouletteGame.OpenBets();
+            _rouletteGame.PlaceBet(_colorBet);
+            _rouletteGame.CloseBets();
+            _rouletteGame.SpinRoulette();
+            _rouletteGame.PayUp();
+
+            _fakeOutput.Received(1).Report(Arg.Is<string>(s =>
+                s.ToLower().Contains("200")
+                &&
+                s.ToLower().Contains("bjarne")));
+        }
+
+        [Test]
+        public void ColorBet_WrongColor_AmountCorrect()
+        {
+            _fakeRandomizer.Next().Returns(3U);
+
+            _rouletteGame.OpenBets();
+            _rouletteGame.PlaceBet(_colorBet);
+            _rouletteGame.CloseBets();
+            _rouletteGame.SpinRoulette();
+            _rouletteGame.PayUp();
+
+            _fakeOutput.DidNotReceive().Report(Arg.Is<string>(s => s.Contains("Bjarne")));
+        }
+
+        [Test]
+        public void EvenOddBet_CorrectParity_AmountCorrect()
+        {
+            _fakeRandomizer.Next().Returns(2U);
+
+            _rouletteGame.OpenBets();
+            _rouletteGame.PlaceBet(_evenOddBet);
+            _rouletteGame.CloseBets();
+            _rouletteGame.SpinRoulette();
+            _rouletteGame.PayUp();
+
+            _fakeOutput.Received(1).Report(Arg.Is<string>(s =>
+                s.ToLower().Contains("200")
+                &&
+                s.ToLower().Contains("berit")));
+        }
+
+        [Test]
+        public void EvenOddBet_WrongParity_AmountCorrect()
+        {
+            _fakeRandomizer.Next().Returns(3U);
+
+            _rouletteGame.OpenBets();
+            _rouletteGame.PlaceBet(_evenOddBet);
+            _rouletteGame.CloseBets();
+            _rouletteGame.SpinRoulette();
+            _rouletteGame.PayUp();
+
+            _fakeOutput.DidNotReceive().Report(Arg.Is<string>(s => s.Contains("Berit")));
+        }
+
     }
 }
